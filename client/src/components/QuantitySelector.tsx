@@ -33,31 +33,42 @@ const QuantitySelector = ({
   };
 
   return (
-    <div className="flex items-center border border-neutral-300 rounded-lg overflow-hidden">
+    <div 
+      className="flex items-center border border-neutral-300 rounded-lg overflow-hidden"
+      role="group"
+      aria-labelledby="quantity-selector-label"
+    >
+      <div id="quantity-selector-label" className="sr-only">Výber množstva</div>
       <button 
         onClick={handleDecrease}
-        className="px-3 py-2 bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition duration-200 disabled:opacity-50"
+        className="px-3 py-2 bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition duration-200 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
         disabled={quantity <= minQuantity}
         aria-label="Znížiť množstvo"
+        aria-controls="quantity-input"
       >
-        <Minus className="w-5 h-5" />
+        <Minus className="w-5 h-5" aria-hidden="true" />
       </button>
       <input 
+        id="quantity-input"
         type="number" 
         min={minQuantity} 
         max={maxQuantity} 
         value={quantity} 
         onChange={handleInputChange}
-        className="w-12 py-2 text-center border-x border-neutral-300 focus:outline-none"
+        className="w-12 py-2 text-center border-x border-neutral-300 focus:outline-none focus:ring-2 focus:ring-primary"
         aria-label="Množstvo"
+        aria-valuemin={minQuantity}
+        aria-valuemax={maxQuantity}
+        aria-valuenow={quantity}
       />
       <button 
         onClick={handleIncrease}
-        className="px-3 py-2 bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition duration-200 disabled:opacity-50"
+        className="px-3 py-2 bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition duration-200 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
         disabled={quantity >= maxQuantity}
         aria-label="Zvýšiť množstvo"
+        aria-controls="quantity-input"
       >
-        <Plus className="w-5 h-5" />
+        <Plus className="w-5 h-5" aria-hidden="true" />
       </button>
     </div>
   );
