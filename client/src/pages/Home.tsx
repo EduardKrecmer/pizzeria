@@ -5,6 +5,7 @@ import CategoryFilter from '../components/CategoryFilter';
 import { usePizzaStore } from '../store/pizzaStore';
 import LoadingOverlay from '../components/LoadingOverlay';
 import ErrorNotification from '../components/ErrorNotification';
+import OpeningHours from '../components/OpeningHours';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -55,6 +56,28 @@ const Home = () => {
         </div>
         <div className="absolute inset-y-0 right-0 w-1/2 hidden lg:block">
           <img className="h-full w-full object-cover" src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80" alt="Čerstvá pizza z pece" />
+        </div>
+      </div>
+
+      {/* Info section with opening hours */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="md:col-span-2">
+            <h2 className="text-2xl font-heading font-bold text-neutral-800 mb-4">O nás</h2>
+            <p className="text-neutral-600 mb-3">
+              Vitajte v našej pizzerii, kde každý deň pripravujeme čerstvé a chutné pizze podľa tradičných talianskych receptov. 
+              Naši skúsení kuchári používajú iba najlepšie suroviny, aby vám priniesli pravý pôžitok z jedla.
+            </p>
+            <p className="text-neutral-600 mb-3">
+              Okrem skvelej pizze u nás nájdete aj príjemnú atmosféru a ochotný personál, ktorý sa postará o vaše pohodlie.
+            </p>
+            <p className="text-neutral-600">
+              Sme tu pre vás každý deň, či už si chcete užiť obed, večeru alebo rodinné posedenie.
+            </p>
+          </div>
+          <div>
+            <OpeningHours />
+          </div>
         </div>
       </div>
 
