@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Plus, Minus } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
 
 interface OrderSummaryProps {
@@ -10,6 +10,7 @@ const OrderSummary = ({ showControls = true }: OrderSummaryProps) => {
   const { 
     items, 
     removeFromCart, 
+    updateQuantity,
     delivery, 
     discount, 
     getSubtotal, 
@@ -92,9 +93,32 @@ const OrderSummary = ({ showControls = true }: OrderSummaryProps) => {
                 )}
                 
                 <div className="flex justify-between mt-1">
-                  <div className="text-sm text-neutral-500">
-                    <span aria-label={`Množstvo: ${item.quantity}`}>Množstvo: {item.quantity}</span>
-                  </div>
+                  {showControls ? (
+                    <div className="flex items-center" role="group" aria-label={`Zmeniť množstvo pre ${item.name}`}>
+                      <button 
+                        onClick={() => updateQuantity(index, Math.max(1, item.quantity - 1))}
+                        className="px-2 py-1 text-sm bg-neutral-100 text-neutral-600 rounded-l-md hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                        aria-label={`Znížiť množstvo pre ${item.name}`}
+                        disabled={item.quantity <= 1}
+                      >
+                        <Minus className="w-3 h-3" aria-hidden="true" />
+                      </button>
+                      <span className="px-2 py-1 text-sm border-t border-b border-neutral-200 text-neutral-700">
+                        {item.quantity}
+                      </span>
+                      <button 
+                        onClick={() => updateQuantity(index, item.quantity + 1)}
+                        className="px-2 py-1 text-sm bg-neutral-100 text-neutral-600 rounded-r-md hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                        aria-label={`Zvýšiť množstvo pre ${item.name}`}
+                      >
+                        <Plus className="w-3 h-3" aria-hidden="true" />
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="text-sm text-neutral-500">
+                      <span aria-label={`Množstvo: ${item.quantity}`}>Množstvo: {item.quantity}</span>
+                    </div>
+                  )}
                   {showControls && (
                     <button 
                       onClick={() => removeFromCart(index)}
