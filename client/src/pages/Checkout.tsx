@@ -40,7 +40,15 @@ const Checkout = () => {
   
   return (
     <div className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-3xl font-heading font-bold text-neutral-800 mb-8">Objednávka</h2>
+      <div className="flex justify-between items-center mb-8">
+        <h2 className="text-3xl font-heading font-bold text-neutral-800">Objednávka</h2>
+        <Link 
+          to="/" 
+          className="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors duration-200 flex items-center gap-2"
+        >
+          <span>← Späť na výber</span>
+        </Link>
+      </div>
 
       <div className="lg:grid lg:grid-cols-12 lg:gap-x-12">
         {/* Order summary (right column on desktop) */}

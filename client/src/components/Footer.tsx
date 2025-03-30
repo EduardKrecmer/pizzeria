@@ -54,16 +54,16 @@ const Footer = () => {
             <h4 className="text-lg font-medium mb-4">Otváracie hodiny</h4>
             <ul className="space-y-2 text-neutral-400">
               <li className="flex justify-between">
-                <span>Pondelok - Piatok</span>
-                <span>10:00 - 22:00</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sobota</span>
-                <span>11:00 - 23:00</span>
-              </li>
-              <li className="flex justify-between">
                 <span>Nedeľa</span>
-                <span>11:00 - 22:00</span>
+                <span>Zatvorené</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Pondelok</span>
+                <span>Zatvorené</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Utorok - Sobota</span>
+                <span>15:00 - 22:00</span>
               </li>
             </ul>
           </div>
