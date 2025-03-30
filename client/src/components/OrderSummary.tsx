@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Trash2, Plus, Minus } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
 
@@ -12,28 +11,9 @@ const OrderSummary = ({ showControls = true }: OrderSummaryProps) => {
     removeFromCart, 
     updateQuantity,
     delivery, 
-    discount, 
     getSubtotal, 
-    getTotal,
-    applyDiscountCode
+    getTotal
   } = useCartStore();
-  
-  const [discountCode, setDiscountCode] = useState('');
-  const [discountError, setDiscountError] = useState('');
-  
-  const handleApplyDiscount = () => {
-    if (discountCode.trim() === '') {
-      setDiscountError('Zadajte zľavový kód');
-      return;
-    }
-    
-    const success = applyDiscountCode(discountCode);
-    if (!success) {
-      setDiscountError('Neplatný zľavový kód');
-    } else {
-      setDiscountError('');
-    }
-  };
   
   if (items.length === 0) {
     return (
@@ -144,12 +124,6 @@ const OrderSummary = ({ showControls = true }: OrderSummaryProps) => {
             <span className="text-neutral-600" id="delivery-label">Doprava</span>
             <span className="font-medium" aria-labelledby="delivery-label">{delivery.toFixed(2)}€</span>
           </div>
-          {discount > 0 && (
-            <div className="flex justify-between">
-              <span className="text-neutral-600" id="discount-label">Zľava</span>
-              <span className="font-medium text-green-600" aria-labelledby="discount-label">-{discount.toFixed(2)}€</span>
-            </div>
-          )}
         </div>
         
         {/* Total */}
@@ -159,33 +133,6 @@ const OrderSummary = ({ showControls = true }: OrderSummaryProps) => {
             <span className="text-lg font-bold text-primary" aria-labelledby="total-label">{getTotal().toFixed(2)}€</span>
           </div>
         </div>
-        
-        {showControls && (
-          <div className="mt-4">
-            <div className="relative">
-              <label htmlFor="discount-code" className="sr-only">Zľavový kód</label>
-              <input 
-                id="discount-code"
-                type="text" 
-                placeholder="Zľavový kód" 
-                value={discountCode}
-                onChange={(e) => setDiscountCode(e.target.value)}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none"
-                aria-describedby={discountError ? "discount-error" : undefined}
-              />
-              <button 
-                onClick={handleApplyDiscount}
-                className="absolute right-2 top-2 px-3 py-1 bg-neutral-100 text-neutral-600 rounded hover:bg-neutral-200 transition duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                aria-label="Použiť zľavový kód"
-              >
-                Použiť
-              </button>
-            </div>
-            {discountError && (
-              <p id="discount-error" className="text-red-500 text-sm mt-1" role="alert">{discountError}</p>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );

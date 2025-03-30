@@ -5,8 +5,6 @@ import { CartItem, Pizza, Extra, PizzaSize, CustomerInfo, Order } from '../types
 interface CartStore {
   items: CartItem[];
   delivery: number;
-  discount: number;
-  discountCode: string | null;
   customerInfo: CustomerInfo | null;
   orderCompleted: boolean;
   orderError: string | null;
@@ -17,7 +15,6 @@ interface CartStore {
   clearCart: () => void;
   getSubtotal: () => number;
   getTotal: () => number;
-  applyDiscountCode: (code: string) => boolean;
   setCustomerInfo: (info: CustomerInfo) => void;
   placeOrder: () => Promise<void>;
   resetOrder: () => void;
@@ -34,8 +31,6 @@ export const useCartStore = create<CartStore>()(
     (set, get) => ({
       items: [],
       delivery: 2.50,
-      discount: 0,
-      discountCode: null,
       customerInfo: null,
       orderCompleted: false,
       orderError: null,
@@ -80,7 +75,7 @@ export const useCartStore = create<CartStore>()(
       },
       
       clearCart: () => {
-        set({ items: [], discount: 0, discountCode: null });
+        set({ items: [] });
       },
       
       getSubtotal: () => {
@@ -89,18 +84,9 @@ export const useCartStore = create<CartStore>()(
       },
       
       getTotal: () => {
-        const { delivery, discount } = get();
+        const { delivery } = get();
         const subtotal = get().getSubtotal();
-        return subtotal + delivery - discount;
-      },
-      
-      applyDiscountCode: (code) => {
-        // Simple discount code logic
-        if (code === 'PIZZA10') {
-          set({ discount: 3.00, discountCode: code });
-          return true;
-        }
-        return false;
+        return subtotal + delivery;
       },
       
       setCustomerInfo: (info) => {
