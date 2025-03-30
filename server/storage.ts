@@ -106,12 +106,23 @@ export class MemStorage implements IStorage {
   async createOrder(insertOrder: InsertOrder): Promise<Order> {
     const id = this.orderCurrentId++;
     const now = new Date().toISOString();
-    const order: Order = { 
-      ...insertOrder, 
-      id, 
-      status: 'pending', 
-      createdAt: now 
+    
+    // Create a properly typed order object
+    const order: Order = {
+      id,
+      customerName: insertOrder.customerName,
+      customerEmail: insertOrder.customerEmail,
+      customerPhone: insertOrder.customerPhone,
+      deliveryAddress: insertOrder.deliveryAddress,
+      deliveryCity: insertOrder.deliveryCity,
+      deliveryPostalCode: insertOrder.deliveryPostalCode,
+      notes: insertOrder.notes ?? null, // Ensure notes is string | null
+      items: insertOrder.items,
+      totalAmount: insertOrder.totalAmount,
+      status: 'pending',
+      createdAt: now
     };
+    
     this.orderData.set(id, order);
     return order;
   }
@@ -174,6 +185,46 @@ export class MemStorage implements IStorage {
         image: "https://images.unsplash.com/photo-1542587222-f9172e5eba29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
         tags: ["Vegetariánske"],
         ingredients: ["Paradajková omáčka", "Mozzarella", "Šampiňóny", "Portobello huby", "Parmezán", "Petržlenová vňať"]
+      },
+      {
+        name: "Hawai",
+        description: "Paradajková omáčka, mozzarella, šunka, ananás",
+        price: 9.90,
+        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
+        tags: ["Sladké", "Klasické"],
+        ingredients: ["Paradajková omáčka", "Mozzarella", "Šunka", "Ananás"]
+      },
+      {
+        name: "Tonno",
+        description: "Paradajková omáčka, mozzarella, tuniak, červená cibuľa, kapary, oregano",
+        price: 11.40,
+        image: "https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
+        tags: ["Ryby", "Klasické"],
+        ingredients: ["Paradajková omáčka", "Mozzarella", "Tuniak", "Červená cibuľa", "Kapary", "Oregano"]
+      },
+      {
+        name: "Vegetariana",
+        description: "Paradajková omáčka, mozzarella, cuketa, baklažán, paprika, cherry paradajky, rukola",
+        price: 10.40,
+        image: "https://images.unsplash.com/photo-1511689660979-10d2b1aada49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
+        tags: ["Vegetariánske", "Špeciality"],
+        ingredients: ["Paradajková omáčka", "Mozzarella", "Grilovaná cuketa", "Grilovaný baklažán", "Paprika", "Cherry paradajky", "Rukola"]
+      },
+      {
+        name: "Calzone",
+        description: "Prekladaná pizza s paradajkovou omáčkou, ricottou, mozzarellou, šunkou a hubami",
+        price: 11.90,
+        image: "https://images.unsplash.com/photo-1541745537411-b8046dc6d1c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
+        tags: ["Špeciality"],
+        ingredients: ["Paradajková omáčka", "Ricotta", "Mozzarella", "Šunka", "Huby"]
+      },
+      {
+        name: "Bufala",
+        description: "Paradajková omáčka, mozzarella di bufala, čerstvé paradajky, bazalka, extra panenský olivový olej",
+        price: 13.90,
+        image: "https://images.unsplash.com/photo-1620374643809-b69c702d0ed4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
+        tags: ["Prémiové", "Vegetariánske"],
+        ingredients: ["Paradajková omáčka", "Mozzarella di bufala", "Čerstvé paradajky", "Bazalka", "Extra panenský olivový olej"]
       }
     ];
 
@@ -186,10 +237,16 @@ export class MemStorage implements IStorage {
     const sampleExtras: InsertExtra[] = [
       { name: "Parmezán", price: 1.00 },
       { name: "Rukola", price: 1.00 },
-      { name: "Pršut", price: 1.00 },
+      { name: "Pršut", price: 1.50 },
       { name: "Huby", price: 1.00 },
       { name: "Olivy", price: 1.00 },
-      { name: "Artičoky", price: 1.00 }
+      { name: "Artičoky", price: 1.00 },
+      { name: "Extra mozzarella", price: 1.50 },
+      { name: "Feferóny", price: 0.80 },
+      { name: "Slanina", price: 1.20 },
+      { name: "Kukurica", price: 0.80 },
+      { name: "Ančovičky", price: 1.50 },
+      { name: "Volské oko", price: 1.00 }
     ];
 
     sampleExtras.forEach((extra) => {
