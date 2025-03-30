@@ -105,7 +105,7 @@ const PizzaCustomization = ({
       
       {/* Extra toppings */}
       <div className="mb-6">
-        <h4 className="text-sm font-medium text-neutral-700 mb-2">Extra prísady (+1.00€)</h4>
+        <h4 className="text-sm font-medium text-neutral-700 mb-2">Extra prísady</h4>
         <div className="flex flex-wrap gap-2">
           {extras.map((extra) => (
             <button 
@@ -117,7 +117,7 @@ const PizzaCustomization = ({
                   : 'bg-neutral-100 text-neutral-600'
               }`}
             >
-              {extra.name}
+              {extra.name} (+{extra.price.toFixed(2)}€)
             </button>
           ))}
         </div>

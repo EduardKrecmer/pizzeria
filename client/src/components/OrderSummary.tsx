@@ -63,6 +63,19 @@ const OrderSummary = ({ showControls = true }: OrderSummaryProps) => {
                 <p className="text-neutral-500 text-sm">{item.size} ({
                   item.size === 'S' ? '25cm' : item.size === 'M' ? '32cm' : '40cm'
                 })</p>
+                
+                {/* Display extra ingredients */}
+                {item.extras.length > 0 && (
+                  <div className="mt-1">
+                    <p className="text-xs text-neutral-500">Extra prísady:</p>
+                    <ul className="text-xs text-neutral-500 flex flex-wrap gap-x-2">
+                      {item.extras.map((extra, i) => (
+                        <li key={i}>{extra.name} (+{extra.price.toFixed(2)}€){i < item.extras.length - 1 ? ',' : ''}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                
                 <div className="flex justify-between mt-1">
                   <div className="text-sm text-neutral-500">
                     <span>Množstvo: {item.quantity}</span>

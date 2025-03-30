@@ -24,6 +24,13 @@ const PizzaDetail = () => {
   const [adding, setAdding] = useState(false);
   const [showError, setShowError] = useState(false);
   
+  // Size modifiers
+  const SIZES: Record<PizzaSize, number> = {
+    'S': -1.00,
+    'M': 0,
+    'L': 2.00
+  };
+  
   useEffect(() => {
     if (pizzas.length === 0) {
       fetchPizzas();
@@ -97,6 +104,19 @@ const PizzaDetail = () => {
     }
   };
   
+  // Calculate current price with all extras and size modifiers
+  const calculateCurrentPrice = () => {
+    if (!pizza) return 0;
+    
+    // Base price with size adjustment
+    const basePrice = pizza.price + SIZES[selectedSize];
+    
+    // Add extra toppings price
+    const extrasPrice = selectedExtras.reduce((sum, extra) => sum + extra.price, 0);
+    
+    return basePrice + extrasPrice;
+  };
+  
   // Generate recommended pizzas (3 random pizzas excluding current one)
   const getRecommendedPizzas = () => {
     if (pizzas.length <= 1) return [];
@@ -107,6 +127,7 @@ const PizzaDetail = () => {
   };
   
   const recommendedPizzas = getRecommendedPizzas();
+  const currentPrice = calculateCurrentPrice();
   
   return (
     <div className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -146,7 +167,14 @@ const PizzaDetail = () => {
                   <div>
                     <div className="flex justify-between items-start">
                       <h2 className="text-3xl font-heading font-bold text-neutral-800">{pizza.name}</h2>
-                      <span className="text-2xl font-semibold text-primary">{pizza.price.toFixed(2)}€</span>
+                      <div className="text-right">
+                        <span className="text-2xl font-semibold text-primary">{currentPrice.toFixed(2)}€</span>
+                        {currentPrice !== pizza.price && (
+                          <div className="text-sm text-neutral-500">
+                            Základná cena: {pizza.price.toFixed(2)}€
+                          </div>
+                        )}
+                      </div>
                     </div>
                     <div className="flex flex-wrap gap-1 mt-2">
                       {pizza.tags.map((tag, index) => (
