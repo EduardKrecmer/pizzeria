@@ -50,6 +50,9 @@ const Home = () => {
                     </a>
                   </div>
                 </div>
+                <div className="mt-4">
+                  <OpeningHours />
+                </div>
               </div>
             </div>
           </div>
@@ -59,27 +62,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Info section with opening hours */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="md:col-span-2">
-            <h2 className="text-2xl font-heading font-bold text-neutral-800 mb-4">O nás</h2>
-            <p className="text-neutral-600 mb-3">
-              Vitajte v našej pizzerii, kde každý deň pripravujeme čerstvé a chutné pizze podľa tradičných talianskych receptov. 
-              Naši skúsení kuchári používajú iba najlepšie suroviny, aby vám priniesli pravý pôžitok z jedla.
-            </p>
-            <p className="text-neutral-600 mb-3">
-              Okrem skvelej pizze u nás nájdete aj príjemnú atmosféru a ochotný personál, ktorý sa postará o vaše pohodlie.
-            </p>
-            <p className="text-neutral-600">
-              Sme tu pre vás každý deň, či už si chcete užiť obed, večeru alebo rodinné posedenie.
-            </p>
-          </div>
-          <div>
-            <OpeningHours />
-          </div>
-        </div>
-      </div>
+
 
       {/* Menu section */}
       <div id="menu-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

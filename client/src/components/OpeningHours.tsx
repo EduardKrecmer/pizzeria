@@ -48,12 +48,6 @@ const OpeningHours = () => {
     // Nastavenie aktuálneho dátumu a času
     setCurrentTime(now);
     
-    // Pre účely testovania môžeme pridať offset, aby sme videli zmeny stavu
-    // Toto by bolo v produkčnom kóde odstránené
-    // const testTime = new Date();
-    // testTime.setHours(testTime.getHours() + 5); // Napr. posun o 5 hodín pre testovanie
-    // const bratislavaTime = testTime;
-    
     // Normálna implementácia
     const bratislavaTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Bratislava' }));
     
@@ -75,50 +69,21 @@ const OpeningHours = () => {
     }
   };
   
-  // Formátovanie času pre zobrazenie
-  const formatTime = (date: Date): string => {
-    return date.toLocaleTimeString('sk-SK', { 
-      hour: '2-digit', 
-      minute: '2-digit',
-      timeZone: 'Europe/Bratislava'
-    });
-  };
-  
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 border border-neutral-200">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold text-neutral-800">Otváracie hodiny</h3>
-        <div className="flex items-center">
-          <span className="text-sm mr-2">Aktuálne:</span>
-          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-            status === 'open' 
-              ? 'bg-green-100 text-green-800' 
-              : 'bg-red-100 text-red-800'
-          }`}>
-            {status === 'open' ? 'Otvorené' : 'Zatvorené'}
-          </span>
-        </div>
-      </div>
-      
-      <div className="text-sm text-neutral-600 mb-2">
-        Aktuálny čas v Bratislave: <span className="font-medium">{formatTime(currentTime)}</span>
-      </div>
-      
-      <div className="grid grid-cols-2 gap-2">
-        {OPENING_HOURS.map((schedule, index) => (
-          <div 
-            key={index} 
-            className={`flex justify-between py-1 ${
-              (index === new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Bratislava' })).getDay() - 1) || 
-              (new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Bratislava' })).getDay() === 0 && index === 6)
-                ? 'font-semibold bg-neutral-100 px-2 rounded' 
-                : ''
-            }`}
-          >
-            <span>{schedule.day}</span>
-            <span>{schedule.hours}</span>
-          </div>
-        ))}
+    <div className="text-center lg:text-left text-sm opacity-90">
+      <div className="inline-flex items-center">
+        <div 
+          className={`mr-2 w-2 h-2 rounded-full ${
+            status === 'open' ? 'bg-green-500' : 'bg-red-500'
+          }`} 
+          aria-hidden="true"
+        ></div>
+        <span 
+          className="text-neutral-200"
+          aria-live="polite"
+        >
+          {status === 'open' ? 'Otvorené' : 'Zatvorené'}
+        </span>
       </div>
     </div>
   );
