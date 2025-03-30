@@ -3,7 +3,7 @@ import { usePizzaStore } from '../store/pizzaStore';
 const CategoryFilter = () => {
   const { activeCategory, setActiveCategory } = usePizzaStore();
   
-  const categories = ['Všetky', 'Klasické', 'Špeciality', 'Vegetariánske', 'Pikantné', 'Sladké', 'Ryby', 'Prémiové'];
+  const categories = ['Všetky', 'Obľúbené', 'Klasické', 'Vegetariánske'];
   
   return (
     <div 

@@ -69,6 +69,11 @@ export const usePizzaStore = create<PizzaStore>((set, get) => ({
     
     if (category === 'Všetky') {
       set({ filteredPizzas: pizzas });
+    } else if (category === 'Obľúbené') {
+      // ID pizz, ktoré sú označené ako obľúbené
+      const favoriteIds = [1, 2, 4, 7]; // Margherita, Diavola, Capricciosa a Hawai
+      const filtered = pizzas.filter(pizza => favoriteIds.includes(pizza.id));
+      set({ filteredPizzas: filtered });
     } else {
       const filtered = pizzas.filter(pizza => 
         pizza.tags.includes(category)
