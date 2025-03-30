@@ -3,7 +3,7 @@ import { usePizzaStore } from '../store/pizzaStore';
 const CategoryFilter = () => {
   const { activeCategory, setActiveCategory } = usePizzaStore();
   
-  const categories = ['Všetky', 'Klasické', 'Špeciality', 'Vegetariánske', 'Pikantné'];
+  const categories = ['Všetky', 'Klasické', 'Špeciality', 'Vegetariánske', 'Pikantné', 'Sladké', 'Ryby', 'Prémiové'];
   
   return (
     <div className="flex flex-wrap justify-center gap-2">
