@@ -2,125 +2,93 @@ import { Pizza, Facebook, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-neutral-800 text-white py-10" role="contentinfo" aria-label="Päta stránky">
+    <footer 
+      className="bg-neutral-50 border-t border-neutral-100 py-6 text-neutral-600" 
+      role="contentinfo" 
+      aria-label="Päta stránky"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center mb-4">
-              <Pizza className="w-7 h-7 mr-2 text-primary" aria-hidden="true" />
-              <h3 className="font-accent text-xl font-bold">Pizzeria Janíček</h3>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+          {/* Logo a kontakt */}
+          <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-6">
+            <div className="flex items-center">
+              <Pizza className="w-5 h-5 mr-2 text-primary" aria-hidden="true" />
+              <h3 className="font-accent text-base font-medium">Pizzeria Janíček</h3>
             </div>
-            <p className="text-neutral-400">Poctivá pizza z kvalitných surovín rovno k vám domov.</p>
-            <div className="flex mt-4 space-x-3" aria-label="Sociálne siete">
+            
+            <div className="flex items-center text-sm text-neutral-500 space-x-4">
+              <a 
+                href="tel:+421944386486" 
+                className="flex items-center hover:text-primary transition-colors duration-200 focus:outline-none focus:text-primary"
+                aria-label="Zavolajte nám: +421 944 386 486"
+              >
+                <Phone className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
+                <span className="hidden sm:inline">+421 944 386 486</span>
+              </a>
+              
+              <a 
+                href="mailto:tancujucapizza@gmail.com"
+                className="flex items-center hover:text-primary transition-colors duration-200 focus:outline-none focus:text-primary"
+                aria-label="Napíšte nám email"
+              >
+                <Mail className="w-3.5 h-3.5" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+          
+          {/* Sociálne siete a odkazy */}
+          <div className="flex items-center justify-between">
+            <div className="flex space-x-3 text-sm" aria-label="Dôležité odkazy">
+              <Link 
+                to="/" 
+                className="text-neutral-500 hover:text-primary transition-colors duration-200 focus:outline-none focus:text-primary"
+              >
+                Podmienky
+              </Link>
+              <Link 
+                to="/" 
+                className="text-neutral-500 hover:text-primary transition-colors duration-200 focus:outline-none focus:text-primary"
+              >
+                Súkromie
+              </Link>
+              <a
+                href="https://maps.app.goo.gl/..."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-500 hover:text-primary transition-colors duration-200 focus:outline-none focus:text-primary"
+              >
+                Mapa
+              </a>
+            </div>
+            
+            <div className="flex ml-4 space-x-2" aria-label="Sociálne siete">
               <a 
                 href="https://www.facebook.com/tancujucapizza" 
-                className="text-neutral-400 hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1" 
+                className="text-neutral-400 hover:text-primary transition-colors duration-200 focus:outline-none focus:text-primary" 
                 aria-label="Facebook profil Pizzeria Janíček"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Facebook className="w-5 h-5" aria-hidden="true" />
+                <Facebook className="w-4 h-4" aria-hidden="true" />
               </a>
               <a 
                 href="https://instagram.com" 
-                className="text-neutral-400 hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1" 
+                className="text-neutral-400 hover:text-primary transition-colors duration-200 focus:outline-none focus:text-primary" 
                 aria-label="Instagram profil Pizzeria Janíček"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Instagram className="w-5 h-5" aria-hidden="true" />
+                <Instagram className="w-4 h-4" aria-hidden="true" />
               </a>
             </div>
           </div>
-          
-          <nav aria-labelledby="footer-info">
-            <h4 className="text-lg font-medium mb-4" id="footer-info">Informácie</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-neutral-400 hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
-                >
-                  O nás
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-neutral-400 hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
-                >
-                  Často kladené otázky
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-neutral-400 hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
-                >
-                  Podmienky používania
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-neutral-400 hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
-                >
-                  Ochrana súkromia
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          
-          <div aria-labelledby="footer-contact">
-            <h4 className="text-lg font-medium mb-4" id="footer-contact">Kontakt</h4>
-            <ul className="space-y-2">
-              <li className="flex items-center text-neutral-400">
-                <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
-                <a 
-                  href="tel:+421944386486" 
-                  className="hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
-                >
-                  +421 944 386 486
-                </a>
-              </li>
-              <li className="flex items-center text-neutral-400">
-                <Mail className="w-4 h-4 mr-2" aria-hidden="true" />
-                <a 
-                  href="mailto:tancujucapizza@gmail.com"
-                  className="hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
-                >
-                  tancujucapizza@gmail.com
-                </a>
-              </li>
-              <li className="flex items-center text-neutral-400">
-                <MapPin className="w-4 h-4 mr-2" aria-hidden="true" />
-                <span>Hlavná 123, Bratislava</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div aria-labelledby="opening-hours">
-            <h4 className="text-lg font-medium mb-4" id="opening-hours">Otváracie hodiny</h4>
-            <dl className="space-y-2 text-neutral-400">
-              <div className="flex justify-between">
-                <dt>Nedeľa</dt>
-                <dd>Zatvorené</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt>Pondelok</dt>
-                <dd>Zatvorené</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt>Utorok - Sobota</dt>
-                <dd>15:00 - 22:00</dd>
-              </div>
-            </dl>
-          </div>
         </div>
         
-        <div className="border-t border-neutral-700 mt-8 pt-8 text-neutral-400 text-sm">
-          <p>© {new Date().getFullYear()} Pizzeria Janíček. Všetky práva vyhradené.</p>
+        <div className="mt-4 pt-4 text-neutral-400 text-xs border-t border-neutral-100 text-center md:text-left">
+          <p>© {currentYear} Pizzeria Janíček. Všetky práva vyhradené.</p>
         </div>
       </div>
     </footer>
