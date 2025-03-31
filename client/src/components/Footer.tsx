@@ -14,7 +14,7 @@ const Footer = () => {
             <p className="text-neutral-400">Poctivá pizza z kvalitných surovín rovno k vám domov.</p>
             <div className="flex mt-4 space-x-3" aria-label="Sociálne siete">
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/tancujucapizza" 
                 className="text-neutral-400 hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1" 
                 aria-label="Facebook profil Pizzeria Janíček"
                 target="_blank"
@@ -78,19 +78,19 @@ const Footer = () => {
               <li className="flex items-center text-neutral-400">
                 <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
                 <a 
-                  href="tel:+421901123456" 
+                  href="tel:+421944386486" 
                   className="hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
                 >
-                  +421 901 123 456
+                  +421 944 386 486
                 </a>
               </li>
               <li className="flex items-center text-neutral-400">
                 <Mail className="w-4 h-4 mr-2" aria-hidden="true" />
                 <a 
-                  href="mailto:info@pizzeriajanicek.sk"
+                  href="mailto:tancujucapizza@gmail.com"
                   className="hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
                 >
-                  info@pizzeriajanicek.sk
+                  tancujucapizza@gmail.com
                 </a>
               </li>
               <li className="flex items-center text-neutral-400">
