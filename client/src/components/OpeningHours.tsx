@@ -70,7 +70,7 @@ const OpeningHours = () => {
   };
   
   return (
-    <div className="text-center lg:text-left text-sm opacity-90">
+    <div className="text-center text-sm">
       <div className="inline-flex items-center">
         <div 
           className={`mr-2 w-2 h-2 rounded-full ${

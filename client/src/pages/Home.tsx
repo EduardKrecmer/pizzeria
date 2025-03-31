@@ -12,22 +12,22 @@ const Home = () => {
   const { fetchPizzas, fetchExtras, filteredPizzas, isLoading, error } = usePizzaStore();
   const [showError, setShowError] = useState(false);
   const [visiblePizzas, setVisiblePizzas] = useState(6);
-  
+
   useEffect(() => {
     fetchPizzas();
     fetchExtras();
   }, [fetchPizzas, fetchExtras]);
-  
+
   useEffect(() => {
     if (error) {
       setShowError(true);
     }
   }, [error]);
-  
+
   const loadMorePizzas = () => {
     setVisiblePizzas(prev => Math.min(prev + 6, filteredPizzas.length));
   };
-  
+
   return (
     <div>
       {/* Hero section - vylepšená verzia */}
@@ -46,25 +46,26 @@ const Home = () => {
                 <p className="mt-4 text-base text-neutral-300 sm:text-lg sm:max-w-xl md:text-xl opacity-90">
                   Vychutnajte si pravú taliansku pizzu priamo u vás doma. Používame iba najkvalitnejšie bio suroviny od lokálnych dodávateľov.
                 </p>
-                
+
                 <div className="mt-8 flex flex-col sm:flex-row items-center sm:items-start justify-center lg:justify-start gap-4">
-                  <a href="#menu-section" 
-                     className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl md:py-4 md:text-lg md:px-10"
-                  >
-                    Objednať teraz
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </a>
-                  
-                  <div className="flex items-center mt-4 sm:mt-0">
-                    <Clock className="w-5 h-5 text-primary mr-2" aria-hidden="true" />
-                    <OpeningHours />
+                  <div className="flex flex-col items-center gap-4">
+                    <a href="#menu-section" 
+                       className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl md:py-4 md:text-lg md:px-10"
+                    >
+                      Objednať teraz
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-5 w-5 text-primary" />
+                      <OpeningHours />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Hero image */}
         <div className="absolute right-0 top-0 w-full h-full lg:w-2/5 overflow-hidden">
           <div className="hidden lg:block absolute inset-0 bg-gradient-to-l from-transparent to-neutral-900 z-10"></div>
@@ -74,7 +75,7 @@ const Home = () => {
             alt="Čerstvá pizza z pece"
             loading="eager"
           />
-          
+
           {/* Mobilný obrázok na pozadí */}
           <div className="absolute inset-0 bg-black bg-opacity-40 lg:hidden"></div>
           <img 
@@ -134,7 +135,7 @@ const Home = () => {
           </div>
         )}
       </div>
-      
+
       {showError && <ErrorNotification message={error || 'Nastala chyba pri načítaní dát'} onClose={() => setShowError(false)} />}
     </div>
   );
