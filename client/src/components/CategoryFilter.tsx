@@ -1,13 +1,19 @@
 import { usePizzaStore } from '../store/pizzaStore';
+import { Heart, Coffee, Salad, Pizza } from 'lucide-react';
 
 const CategoryFilter = () => {
   const { activeCategory, setActiveCategory } = usePizzaStore();
   
-  const categories = ['Všetky', 'Obľúbené', 'Klasické', 'Vegetariánske'];
+  const categories = [
+    { id: 'Všetky', label: 'Všetky', icon: <Pizza className="w-4 h-4" /> },
+    { id: 'Obľúbené', label: 'Obľúbené', icon: <Heart className="w-4 h-4" /> },
+    { id: 'Klasické', label: 'Klasické', icon: <Coffee className="w-4 h-4" /> },
+    { id: 'Vegetariánske', label: 'Vegetariánske', icon: <Salad className="w-4 h-4" /> }
+  ];
   
   return (
     <div 
-      className="flex flex-wrap justify-center gap-2"
+      className="flex flex-wrap justify-center gap-2 py-2"
       role="region"
       aria-label="Filtrovanie pizze podľa kategórie"
     >
@@ -15,22 +21,23 @@ const CategoryFilter = () => {
       <div 
         role="radiogroup" 
         aria-labelledby="category-group-label"
-        className="flex flex-wrap justify-center gap-2"
+        className="flex flex-wrap justify-center gap-3 w-full max-w-xl"
       >
-        {categories.map((category) => (
+        {categories.map(({ id, label, icon }) => (
           <button
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`px-4 py-2 rounded-full font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
-              activeCategory === category
-                ? 'bg-primary text-white'
-                : 'bg-white text-neutral-600 hover:bg-neutral-100'
+            key={id}
+            onClick={() => setActiveCategory(id)}
+            className={`px-4 py-2 rounded-full font-medium flex items-center shadow-sm transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+              activeCategory === id
+                ? 'bg-primary text-white shadow-md scale-105 transform'
+                : 'bg-white text-neutral-600 hover:bg-neutral-50 hover:scale-105 hover:shadow'
             }`}
             role="radio"
-            aria-checked={activeCategory === category}
-            aria-label={`Kategória: ${category}`}
+            aria-checked={activeCategory === id}
+            aria-label={`Kategória: ${label}`}
           >
-            {category}
+            <span className="mr-2">{icon}</span>
+            {label}
           </button>
         ))}
       </div>
