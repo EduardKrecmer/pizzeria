@@ -47,19 +47,14 @@ const Home = () => {
                   Vychutnajte si pravú taliansku pizzu priamo u vás doma. Používame iba najkvalitnejšie bio suroviny od lokálnych dodávateľov.
                 </p>
 
-                <div className="mt-8 flex flex-col sm:flex-row items-center sm:items-start justify-center lg:justify-start gap-4">
-                  <div className="flex flex-col items-center gap-4">
-                    <a href="#menu-section" 
-                       className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl md:py-4 md:text-lg md:px-10"
-                    >
-                      Objednať teraz
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </a>
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-5 w-5 text-primary" />
-                      <OpeningHours />
-                    </div>
-                  </div>
+                <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center">
+                  <Link 
+                    to="/menu"
+                    className="w-full sm:w-auto px-8 py-3.5 border border-transparent text-base font-medium rounded-lg text-white bg-primary hover:bg-primary-dark md:text-lg md:px-10 transition duration-200 text-center shadow-lg hover:shadow-xl"
+                  >
+                    Objednať teraz
+                  </Link>
+                  <OpeningHours />
                 </div>
               </div>
             </div>
