@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  /* Mobile safe area utilities */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
   :root {
     --primary: 22 100% 60%;
     --primary-dark: 22 100% 52%;

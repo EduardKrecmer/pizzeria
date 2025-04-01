@@ -32,7 +32,7 @@ const Navigation = () => {
   
   return (
     <nav 
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 safe-top ${
         isScrolled 
           ? 'bg-white shadow-md backdrop-blur-sm bg-opacity-90' 
           : 'bg-white shadow-sm'
