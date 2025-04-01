@@ -90,16 +90,9 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
             
             {/* Cena */}
             <div className="absolute top-2 right-2 z-10">
-              <div className="flex flex-col items-end space-y-1">
-                <span className="bg-white bg-opacity-90 text-primary font-bold px-2 py-1 rounded-md shadow-sm">
-                  {price.toFixed(2)}€
-                </span>
-                {weight && (
-                  <span className="bg-white bg-opacity-80 text-neutral-600 text-xs px-2 py-0.5 rounded-md">
-                    {weight}
-                  </span>
-                )}
-              </div>
+              <span className="bg-white bg-opacity-90 text-primary font-bold px-2 py-1 rounded-md shadow-sm">
+                {price.toFixed(2)}€
+              </span>
             </div>
           </div>
           
