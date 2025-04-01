@@ -207,6 +207,20 @@ const PizzaDetail = () => {
                 <div className="mb-4">
                   <h3 className="text-lg font-medium mb-2">Popis</h3>
                   <p className="text-neutral-600">{pizza.description}</p>
+                  
+                  {/* Info o gramáži a alergénoch */}
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-3 text-sm text-neutral-500">
+                    {pizza.weight && (
+                      <div className="flex items-center">
+                        <span className="font-medium mr-1">Gramáž:</span> {pizza.weight}
+                      </div>
+                    )}
+                    {pizza.allergens && (
+                      <div className="flex items-center">
+                        <span className="font-medium mr-1">Alergény:</span> {pizza.allergens}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Prispôsobenie */}

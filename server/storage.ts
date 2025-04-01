@@ -4,6 +4,8 @@ import {
   extras, type Extra, type InsertExtra,
   orders, type Order, type InsertOrder
 } from "@shared/schema";
+import fs from 'fs';
+import path from 'path';
 
 export interface IStorage {
   // User operations
@@ -81,7 +83,13 @@ export class MemStorage implements IStorage {
 
   async createPizza(insertPizza: InsertPizza): Promise<Pizza> {
     const id = this.pizzaCurrentId++;
-    const pizza: Pizza = { ...insertPizza, id };
+    // Zaistíme, že weight a allergens sú správne typované ako string | null
+    const pizza: Pizza = { 
+      ...insertPizza, 
+      id,
+      weight: insertPizza.weight || null,
+      allergens: insertPizza.allergens || null 
+    };
     this.pizzaData.set(id, pizza);
     return pizza;
   }
@@ -137,6 +145,39 @@ export class MemStorage implements IStorage {
 
   // Initialize sample data
   private initializePizzas() {
+    try {
+      // Načítaj pizze z JSON súboru
+      const pizzasFilePath = path.join(process.cwd(), 'pizzas-new.json');
+      
+      if (fs.existsSync(pizzasFilePath)) {
+        console.log('Načítavam pizze z aktualizovaného súboru pizzas-new.json');
+        const pizzasData = JSON.parse(fs.readFileSync(pizzasFilePath, 'utf-8'));
+        
+        // Konvertujeme načítané dáta na InsertPizza[]
+        const pizzasToInsert: InsertPizza[] = pizzasData.map((pizza: any) => ({
+          name: pizza.name,
+          description: pizza.description,
+          price: pizza.price,
+          image: pizza.image,
+          tags: pizza.tags || ["Klasické"],
+          ingredients: pizza.ingredients,
+          weight: pizza.weight || null,
+          allergens: pizza.allergens || null
+        }));
+        
+        pizzasToInsert.forEach((pizza) => {
+          this.createPizza(pizza);
+        });
+        
+        console.log(`Načítaných ${pizzasToInsert.length} pizz z pizzas-new.json`);
+        return;
+      }
+    } catch (error) {
+      console.error('Chyba pri načítaní pizz z JSON súboru:', error);
+      console.log('Použijeme predvolené dáta pizz...');
+    }
+    
+    // Fallback - predvolené pizze, ak sa nepodarí načítať z JSON súboru
     const samplePizzas: InsertPizza[] = [
       {
         name: "Margherita",
@@ -147,84 +188,20 @@ export class MemStorage implements IStorage {
         ingredients: ["Paradajková omáčka", "Mozzarella", "Bazalka", "Olivový olej"]
       },
       {
-        name: "Diavola",
-        description: "Paradajková omáčka, mozzarella, pikantná saláma, feferóny, oregano",
-        price: 10.90,
-        image: "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-        tags: ["Pikantné", "Klasické"],
-        ingredients: ["Paradajková omáčka", "Mozzarella", "Pikantná saláma", "Feferóny", "Oregano"]
-      },
-      {
-        name: "Quattro Formaggi",
-        description: "Smotanový základ, mozzarella, gorgonzola, parmezán, ementál, čerstvé bylinky",
-        price: 11.90,
-        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-        tags: ["Vegetariánske", "Špeciality"],
-        ingredients: ["Smotanový základ", "Mozzarella", "Gorgonzola", "Parmezán", "Ementál", "Čerstvé bylinky"]
-      },
-      {
-        name: "Capricciosa",
-        description: "Paradajková omáčka, mozzarella, šunka, artičoky, olivy, huby",
-        price: 10.50,
+        name: "Šunková",
+        description: "Paradajková omáčka, mozzarella, šunka",
+        price: 6.10,
         image: "https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
         tags: ["Klasické"],
-        ingredients: ["Paradajková omáčka", "Mozzarella", "Šunka", "Artičoky", "Olivy", "Huby"]
-      },
-      {
-        name: "Prosciutto",
-        description: "Paradajková omáčka, mozzarella, prosciutto crudo, rukola, cherry paradajky, parmezán",
-        price: 12.90,
-        image: "https://images.unsplash.com/photo-1581873372796-635b67ca2008?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-        tags: ["Špeciality"],
-        ingredients: ["Paradajková omáčka", "Mozzarella", "Prosciutto crudo", "Rukola", "Cherry paradajky", "Parmezán"]
+        ingredients: ["Paradajková omáčka", "Mozzarella", "Šunka"]
       },
       {
         name: "Funghi",
-        description: "Paradajková omáčka, mozzarella, šampiňóny, portobello huby, parmezán, petržlenová vňať",
+        description: "Paradajková omáčka, mozzarella, šampiňóny, parmezán",
         price: 9.90,
         image: "https://images.unsplash.com/photo-1542587222-f9172e5eba29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
         tags: ["Vegetariánske"],
-        ingredients: ["Paradajková omáčka", "Mozzarella", "Šampiňóny", "Portobello huby", "Parmezán", "Petržlenová vňať"]
-      },
-      {
-        name: "Hawai",
-        description: "Paradajková omáčka, mozzarella, šunka, ananás",
-        price: 9.90,
-        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-        tags: ["Sladké", "Klasické"],
-        ingredients: ["Paradajková omáčka", "Mozzarella", "Šunka", "Ananás"]
-      },
-      {
-        name: "Tonno",
-        description: "Paradajková omáčka, mozzarella, tuniak, červená cibuľa, kapary, oregano",
-        price: 11.40,
-        image: "https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-        tags: ["Ryby", "Klasické"],
-        ingredients: ["Paradajková omáčka", "Mozzarella", "Tuniak", "Červená cibuľa", "Kapary", "Oregano"]
-      },
-      {
-        name: "Vegetariana",
-        description: "Paradajková omáčka, mozzarella, cuketa, baklažán, paprika, cherry paradajky, rukola",
-        price: 10.40,
-        image: "https://images.unsplash.com/photo-1511689660979-10d2b1aada49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-        tags: ["Vegetariánske", "Špeciality"],
-        ingredients: ["Paradajková omáčka", "Mozzarella", "Grilovaná cuketa", "Grilovaný baklažán", "Paprika", "Cherry paradajky", "Rukola"]
-      },
-      {
-        name: "Calzone",
-        description: "Prekladaná pizza s paradajkovou omáčkou, ricottou, mozzarellou, šunkou a hubami",
-        price: 11.90,
-        image: "https://images.unsplash.com/photo-1541745537411-b8046dc6d1c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-        tags: ["Špeciality"],
-        ingredients: ["Paradajková omáčka", "Ricotta", "Mozzarella", "Šunka", "Huby"]
-      },
-      {
-        name: "Bufala",
-        description: "Paradajková omáčka, mozzarella di bufala, čerstvé paradajky, bazalka, extra panenský olivový olej",
-        price: 13.90,
-        image: "https://images.unsplash.com/photo-1620374643809-b69c702d0ed4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-        tags: ["Prémiové", "Vegetariánske"],
-        ingredients: ["Paradajková omáčka", "Mozzarella di bufala", "Čerstvé paradajky", "Bazalka", "Extra panenský olivový olej"]
+        ingredients: ["Paradajková omáčka", "Mozzarella", "Šampiňóny", "Parmezán"]
       }
     ];
 
@@ -235,18 +212,38 @@ export class MemStorage implements IStorage {
 
   private initializeExtras() {
     const sampleExtras: InsertExtra[] = [
+      // Skupina: Syry
+      { name: "Mozzarella", price: 1.20 },
       { name: "Parmezán", price: 1.00 },
-      { name: "Rukola", price: 1.00 },
-      { name: "Pršut", price: 1.50 },
-      { name: "Huby", price: 1.00 },
-      { name: "Olivy", price: 1.00 },
-      { name: "Artičoky", price: 1.00 },
-      { name: "Extra mozzarella", price: 1.50 },
-      { name: "Feferóny", price: 0.80 },
-      { name: "Slanina", price: 1.20 },
+      { name: "Niva", price: 1.20 },
+      { name: "Bryndza", price: 1.20 },
+      { name: "Balkánsky syr", price: 1.00 },
+      
+      // Skupina: Zelenina
       { name: "Kukurica", price: 0.80 },
+      { name: "Cibuľa", price: 0.60 },
+      { name: "Rukola", price: 1.00 },
+      { name: "Feferóny", price: 0.80 },
+      { name: "Olivy", price: 1.00 },
+      { name: "Paprika", price: 0.80 },
+      { name: "Cherry paradajky", price: 1.00 },
+      { name: "Baranie rohy", price: 0.80 },
+      
+      // Skupina: Mäso a ryby
+      { name: "Šunka", price: 1.20 },
+      { name: "Slanina", price: 1.20 },
+      { name: "Klobása", price: 1.20 },
+      { name: "Saláma", price: 1.20 },
+      { name: "Pršut", price: 1.50 },
+      { name: "Tuniak", price: 1.50 },
       { name: "Ančovičky", price: 1.50 },
-      { name: "Volské oko", price: 1.00 }
+      
+      // Skupina: Špeciality
+      { name: "Volské oko", price: 1.00 },
+      { name: "Vajce", price: 0.80 },
+      { name: "Artičoky", price: 1.00 },
+      { name: "Cesnak", price: 0.50 },
+      { name: "Huby", price: 1.00 }
     ];
 
     sampleExtras.forEach((extra) => {

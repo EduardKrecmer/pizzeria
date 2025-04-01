@@ -14,7 +14,7 @@ interface PizzaCardProps {
 const FALLBACK_IMAGE = 'https://via.placeholder.com/400x300/f5f5f5/e0e0e0?text=Pizza';
 
 const PizzaCard = ({ pizza }: PizzaCardProps) => {
-  const { id, name, description, price, image, tags } = pizza;
+  const { id, name, description, price, image, tags, weight } = pizza;
   const [loading, setLoading] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -90,9 +90,16 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
             
             {/* Cena */}
             <div className="absolute top-2 right-2 z-10">
-              <span className="bg-white bg-opacity-90 text-primary font-bold px-2 py-1 rounded-md shadow-sm">
-                {price.toFixed(2)}€
-              </span>
+              <div className="flex flex-col items-end space-y-1">
+                <span className="bg-white bg-opacity-90 text-primary font-bold px-2 py-1 rounded-md shadow-sm">
+                  {price.toFixed(2)}€
+                </span>
+                {weight && (
+                  <span className="bg-white bg-opacity-80 text-neutral-600 text-xs px-2 py-0.5 rounded-md">
+                    {weight}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
           

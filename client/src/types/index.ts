@@ -25,6 +25,8 @@ export interface Pizza {
   image: string;
   tags: string[];
   ingredients: string[];
+  weight?: string | null;
+  allergens?: string | null;
 }
 
 export interface Extra {

@@ -10,6 +10,8 @@ export const pizzas = pgTable("pizzas", {
   image: text("image").notNull(),
   tags: text("tags").array().notNull(),
   ingredients: text("ingredients").array().notNull(),
+  weight: text("weight"),
+  allergens: text("allergens")
 });
 
 export const extras = pgTable("extras", {
@@ -48,7 +50,10 @@ export const insertOrderSchema = createInsertSchema(orders).omit({
 });
 
 export type Pizza = typeof pizzas.$inferSelect;
-export type InsertPizza = z.infer<typeof insertPizzaSchema>;
+export type InsertPizza = z.infer<typeof insertPizzaSchema> & {
+  weight?: string | null;
+  allergens?: string | null;
+};
 
 export type Extra = typeof extras.$inferSelect;
 export type InsertExtra = z.infer<typeof insertExtrasSchema>;
