@@ -42,7 +42,12 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center gap-2" aria-label="Domovská stránka Pizzeria Janíček">
+            <Link 
+              to="/" 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex-shrink-0 flex items-center gap-2" 
+              aria-label="Domovská stránka Pizzeria Janíček"
+            >
               <Pizza className="w-8 h-8 text-primary" aria-hidden="true" />
               <h1 className="font-accent text-xl sm:text-2xl font-bold text-primary">Pizzeria Janíček</h1>
             </Link>
@@ -50,13 +55,6 @@ const Navigation = () => {
           
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-5" role="navigation" aria-label="Hlavné menu">
-            <Link 
-              to="/" 
-              className={`px-3 py-2 font-medium transition duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md ${location.pathname === '/' ? 'text-primary' : 'text-neutral-600 hover:text-primary'}`}
-              aria-current={location.pathname === '/' ? 'page' : undefined}
-            >
-              Domov
-            </Link>
             <Link 
               to="/menu" 
               className={`px-3 py-2 font-medium transition duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md ${location.pathname === '/menu' ? 'text-primary' : 'text-neutral-600 hover:text-primary'}`}
@@ -117,18 +115,7 @@ const Navigation = () => {
         aria-label="Mobilné menu"
       >
         <div className="px-2 py-3 space-y-2">
-          <Link 
-            to="/" 
-            className={`block px-3 py-2 rounded-md text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
-              location.pathname === '/' 
-                ? 'text-primary bg-neutral-50' 
-                : 'text-neutral-600 hover:text-primary hover:bg-neutral-50'
-            }`}
-            onClick={() => setMobileMenuOpen(false)}
-            aria-current={location.pathname === '/' ? 'page' : undefined}
-          >
-            Domov
-          </Link>
+          
           <Link 
             to="/menu" 
             className={`block px-3 py-2 rounded-md text-base font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
