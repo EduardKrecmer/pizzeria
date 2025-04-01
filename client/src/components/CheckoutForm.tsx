@@ -51,24 +51,7 @@ const CheckoutForm = () => {
     }
   };
   
-  // Format postal code as user types
-  const handlePostalCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    // Allow only numbers
-    const numericValue = value.replace(/\D/g, '').slice(0, 5);
-    // Format postal code (PSČ)
-    let formattedValue = numericValue;
-    if (numericValue.length > 3) {
-      formattedValue = `${numericValue.slice(0, 3)} ${numericValue.slice(3)}`;
-    }
-    
-    setFormData({ ...formData, postalCode: formattedValue });
-    
-    // Clear error when user types
-    if (errors.postalCode) {
-      setErrors({ ...errors, postalCode: '' });
-    }
-  };
+  
   
   const validateForm = () => {
     const newErrors: Partial<Record<keyof CustomerInfo, string>> = {};
@@ -82,11 +65,6 @@ const CheckoutForm = () => {
     
     if (!formData.street.trim()) newErrors.street = 'Ulica a číslo sú povinné';
     if (!formData.city.trim()) newErrors.city = 'Mesto je povinné';
-    if (!formData.postalCode.trim()) {
-      newErrors.postalCode = 'PSČ je povinné';
-    } else if (!/^[0-9\s]{5,6}$/.test(formData.postalCode.replace(/\s/g, ''))) {
-      newErrors.postalCode = 'PSČ musí obsahovať 5 číslic';
-    }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -211,28 +189,16 @@ const CheckoutForm = () => {
                 placeholder="Názov ulice a číslo domu"
               />
             
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField 
-                  label="Mesto"
-                  id="city"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleInputChange}
-                  icon={<MapPin className="w-4 h-4" />}
-                  error={errors.city}
-                  placeholder="Mesto"
-                />
-                <FormField 
-                  label="PSČ"
-                  id="postalCode"
-                  name="postalCode"
-                  value={formData.postalCode}
-                  onChange={handlePostalCodeChange}
-                  icon={<span className="text-sm font-medium">#</span>}
-                  error={errors.postalCode}
-                  placeholder="XXX XX"
-                />
-              </div>
+              <FormField 
+                label="Mesto"
+                id="city"
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+                icon={<MapPin className="w-4 h-4" />}
+                error={errors.city}
+                placeholder="Mesto"
+              />
             </div>
           </div>
           
