@@ -1,5 +1,5 @@
 import { usePizzaStore } from '../store/pizzaStore';
-import { Heart, Coffee, Salad, Pizza } from 'lucide-react';
+import { Heart, Wheat, Leaf, Pizza } from 'lucide-react';
 
 const CategoryFilter = () => {
   const { activeCategory, setActiveCategory } = usePizzaStore();
@@ -7,8 +7,8 @@ const CategoryFilter = () => {
   const categories = [
     { id: 'Všetky', label: 'Všetky', icon: <Pizza className="w-4 h-4" /> },
     { id: 'Obľúbené', label: 'Obľúbené', icon: <Heart className="w-4 h-4" /> },
-    { id: 'Klasické', label: 'Klasické', icon: <Coffee className="w-4 h-4" /> },
-    { id: 'Vegetariánske', label: 'Vegetariánske', icon: <Salad className="w-4 h-4" /> }
+    { id: 'Klasické', label: 'Klasické', icon: <Wheat className="w-4 h-4" /> },
+    { id: 'Vegetariánske', label: 'Vegetariánske', icon: <Leaf className="w-4 h-4" /> }
   ];
   
   return (
@@ -27,16 +27,16 @@ const CategoryFilter = () => {
           <button
             key={id}
             onClick={() => setActiveCategory(id)}
-            className={`px-4 py-2 rounded-full font-medium flex items-center shadow-sm transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+            className={`px-5 py-2 rounded-md text-sm font-medium flex items-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-1 ${
               activeCategory === id
-                ? 'bg-primary text-white shadow-md scale-105 transform'
-                : 'bg-white text-neutral-600 hover:bg-neutral-50 hover:scale-105 hover:shadow'
+                ? 'bg-primary/90 border-primary text-white shadow-md'
+                : 'bg-white border text-foreground/80 border-primary/10 hover:border-primary/30 hover:bg-primary/5'
             }`}
             role="radio"
             aria-checked={activeCategory === id}
             aria-label={`Kategória: ${label}`}
           >
-            <span className="mr-2">{icon}</span>
+            <span className={`mr-2 ${activeCategory === id ? 'text-white' : 'text-primary'}`}>{icon}</span>
             {label}
           </button>
         ))}

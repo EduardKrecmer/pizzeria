@@ -12,41 +12,42 @@
   }
   
   :root {
-    --primary: 22 100% 60%;
-    --primary-dark: 22 100% 52%;
-    --primary-light: 22 100% 69%;
+    /* Organická zeleno-hnedá farebná paleta pre bio reštauráciu */
+    --primary: 120 35% 38%;    /* Organická zelená */
+    --primary-dark: 120 40% 30%; 
+    --primary-light: 120 35% 46%; 
     
-    --secondary: 210 100% 30%;
-    --secondary-dark: 210 100% 24%;
-    --secondary-light: 210 100% 40%;
+    --secondary: 36 30% 60%;   /* Teplá hnedá - farba zrna */
+    --secondary-dark: 36 30% 50%;
+    --secondary-light: 36 30% 70%;
     
-    --accent: 51 100% 50%;
-    --accent-dark: 51 100% 46%;
-    --accent-light: 51 100% 60%;
+    --accent: 60 70% 65%;     /* Svetlá žltá - farba slnka */
+    --accent-dark: 60 70% 55%;
+    --accent-light: 60 70% 75%;
     
-    --background: 0 0% 98%;
-    --foreground: 222 47% 11%;
+    --background: 60 15% 98%;  /* Jemne krémové pozadie */
+    --foreground: 36 15% 22%;
     
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 36 15% 22%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 36 15% 22%;
     
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 60 10% 96%;
+    --muted-foreground: 36 8% 47%;
     
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 84 20% 92%;      /* Jemná zelená ako accent */
+    --accent-foreground: 36 15% 22%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
     
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 47% 11%;
+    --border: 120 6% 92%;
+    --input: 120 6% 92%;
+    --ring: 120 35% 38%;
     
-    --radius: 0.75rem;
+    --radius: 0.5rem;          /* Menej zaoblené rohy pre modernejší vzhľad */
   }
   
   * {
@@ -54,16 +55,27 @@
   }
   
   body {
-    font-family: 'Open Sans', sans-serif;
-    @apply bg-neutral-50 text-neutral-800 antialiased;
+    font-family: 'Quicksand', sans-serif;
+    @apply bg-background text-foreground antialiased font-light tracking-wide;
+    letter-spacing: 0.01em;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
+    @apply font-medium tracking-tight;
   }
   
   .font-accent {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Caveat', cursive;
+  }
+  
+  /* Špecifické štýly pre bio koncept */
+  .bio-tag {
+    @apply bg-primary/10 text-primary px-2 py-1 rounded-md text-xs font-medium uppercase tracking-wider;
+  }
+  
+  .eco-divider {
+    @apply h-0.5 bg-gradient-to-r from-primary/20 via-primary/60 to-primary/20 my-4 rounded-full;
   }
 }
 
