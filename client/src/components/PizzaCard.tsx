@@ -59,7 +59,7 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="group nature-box flex flex-col h-full border-[#a2b969] hover:border-[#7d9940] bg-white bg-opacity-90"
+        className="group nature-box flex flex-col h-full border border-[#e0e8c9] hover:border-[#d0dbb0] bg-white bg-opacity-95 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)] rounded-lg"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         whileHover={{ y: -5 }}
