@@ -59,7 +59,7 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full"
+        className="group nature-box flex flex-col h-full border-[#a2b969] hover:border-[#7d9940] bg-white bg-opacity-90"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         whileHover={{ y: -5 }}
@@ -69,11 +69,11 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
           className="flex flex-col h-full" 
           aria-labelledby={`pizza-${id}-title`}
         >
-          <div className="relative overflow-hidden" style={{ paddingBottom: '60%' }}>
+          <div className="relative overflow-hidden rounded-t-lg" style={{ paddingBottom: '60%' }}>
             {/* Placeholder kým sa obrázok nenačíta */}
             {!isImageLoaded && (
-              <div className="absolute inset-0 bg-neutral-100 flex items-center justify-center">
-                <PizzaIcon className="h-12 w-12 text-neutral-300" aria-hidden="true" />
+              <div className="absolute inset-0 bg-[#f5f4ef] flex items-center justify-center">
+                <PizzaIcon className="h-12 w-12 text-[#a2b969]" aria-hidden="true" />
               </div>
             )}
             
@@ -90,25 +90,34 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
             
             {/* Cena */}
             <div className="absolute top-2 right-2 z-10">
-              <span className="bg-white bg-opacity-90 text-primary font-bold px-2 py-1 rounded-md shadow-sm">
+              <span className="bg-[#4a5d23] text-white font-bold px-2 py-1 rounded-full shadow-sm">
                 {price.toFixed(2)}€
               </span>
             </div>
+            
+            {/* Nový tag pre špeciálne alebo vegetariánske pizze */}
+            {tags.includes('Vegetariánska') && (
+              <div className="absolute top-2 left-2 z-10">
+                <span className="eco-badge">
+                  Vegetariánska
+                </span>
+              </div>
+            )}
           </div>
           
           <div className="p-4 flex-grow flex flex-col">
             <div className="flex flex-col mb-2">
               <h3 
                 id={`pizza-${id}-title`} 
-                className="text-xl font-heading font-bold text-neutral-800 group-hover:text-primary transition-colors duration-200"
+                className="text-xl font-heading font-bold text-[#4a5d23] group-hover:text-[#7d9940] transition-colors duration-200"
               >
                 {name}
               </h3>
               <div className="flex flex-wrap gap-1 mt-1 mb-2" aria-label="Kategórie">
-                {tags.map((tag, index) => (
+                {tags.filter(tag => tag !== 'Vegetariánska').map((tag, index) => (
                   <span 
                     key={index} 
-                    className="inline-block bg-neutral-100 text-neutral-600 text-xs px-2 py-0.5 rounded-full"
+                    className="inline-block bg-[#f2f5e9] text-[#5a6d33] text-xs px-2 py-0.5 rounded-full border border-[#e0e8c9]"
                     role="listitem"
                   >
                     {tag}
@@ -117,15 +126,15 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
               </div>
             </div>
             
-            <p className="text-neutral-600 mt-1 text-sm flex-grow">
-              {truncateText(description, 100)}
+            <p className="text-neutral-700 mt-1 text-sm flex-grow">
+              {truncateText(description, 90)}
             </p>
             
             <div className="mt-4">
               <motion.button 
                 onClick={handleAddToCart}
                 disabled={loading}
-                className="w-full px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shadow-sm hover:shadow"
+                className="w-full px-4 py-2 bg-[#4a5d23] text-white rounded-lg font-medium hover:bg-[#3d4d1c] transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#4a5d23] focus:ring-offset-2 shadow-sm hover:shadow"
                 aria-label={`Pridať ${name} do košíka`}
                 aria-busy={loading}
                 whileTap={{ scale: 0.95 }}

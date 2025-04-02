@@ -46,19 +46,19 @@ const PizzaCustomization = ({
   return (
     <div>
       <div className="flex items-center mb-4">
-        <h3 className="text-lg font-semibold" id="customization-heading">Prispôsob si svoju pizzu</h3>
+        <h3 className="text-lg font-semibold text-[#4a5d23]" id="customization-heading">Prispôsob si svoju pizzu</h3>
       </div>
       
       {/* Size selection */}
       <div className="mb-6" role="radiogroup" aria-labelledby="size-heading">
-        <h4 className="text-sm font-medium text-neutral-700 mb-2" id="size-heading">Veľkosť</h4>
+        <h4 className="text-sm font-medium text-[#5a6d33] mb-2" id="size-heading">Veľkosť</h4>
         <div className="flex gap-2">
           <button 
             onClick={() => handleSizeClick('S')}
             className={`flex-1 px-3 py-2 rounded-md border text-center text-sm font-medium transition-colors ${
               selectedSize === 'S' 
-                ? 'bg-primary text-white border-primary' 
-                : 'border-neutral-200 text-neutral-700 hover:bg-neutral-50'
+                ? 'bg-[#4a5d23] text-white border-[#4a5d23] shadow-sm' 
+                : 'border-[#c9d6a3] text-[#5a6d33] hover:bg-[#f5f9ee]'
             }`}
             role="radio"
             aria-checked={selectedSize === 'S'}
@@ -71,8 +71,8 @@ const PizzaCustomization = ({
             onClick={() => handleSizeClick('M')}
             className={`flex-1 px-3 py-2 rounded-md border text-center text-sm font-medium transition-colors ${
               selectedSize === 'M' 
-                ? 'bg-primary text-white border-primary' 
-                : 'border-neutral-200 text-neutral-700 hover:bg-neutral-50'
+                ? 'bg-[#4a5d23] text-white border-[#4a5d23] shadow-sm' 
+                : 'border-[#c9d6a3] text-[#5a6d33] hover:bg-[#f5f9ee]'
             }`}
             role="radio"
             aria-checked={selectedSize === 'M'}
@@ -85,8 +85,8 @@ const PizzaCustomization = ({
             onClick={() => handleSizeClick('L')}
             className={`flex-1 px-3 py-2 rounded-md border text-center text-sm font-medium transition-colors ${
               selectedSize === 'L' 
-                ? 'bg-primary text-white border-primary' 
-                : 'border-neutral-200 text-neutral-700 hover:bg-neutral-50'
+                ? 'bg-[#4a5d23] text-white border-[#4a5d23] shadow-sm' 
+                : 'border-[#c9d6a3] text-[#5a6d33] hover:bg-[#f5f9ee]'
             }`}
             role="radio"
             aria-checked={selectedSize === 'L'}
@@ -99,8 +99,8 @@ const PizzaCustomization = ({
       </div>
       
       {/* Ingredients toggle */}
-      <div className="mb-6 border border-neutral-100 rounded-lg p-4 bg-neutral-50/50">
-        <h4 className="text-sm font-medium text-neutral-700 mb-3" id="ingredients-heading">Ingrediencie</h4>
+      <div className="mb-6 border border-[#c9d6a3] rounded-lg p-4 bg-[#f5f9ee]/80">
+        <h4 className="text-sm font-medium text-[#4a5d23] mb-3" id="ingredients-heading">Ingrediencie</h4>
         <fieldset aria-labelledby="ingredients-heading" className="border-0 p-0 m-0">
           <legend className="sr-only">Vyberte si ingrediencie pre vašu pizzu</legend>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -111,10 +111,10 @@ const PizzaCustomization = ({
                   type="checkbox" 
                   checked={selectedIngredients.includes(ingredient)} 
                   onChange={() => handleIngredientToggle(ingredient)} 
-                  className="w-4 h-4 accent-primary focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="w-4 h-4 text-[#4a5d23] focus:ring-2 focus:ring-[#4a5d23] focus:ring-offset-2"
                   aria-label={`Ingrediencia: ${ingredient}`}
                 />
-                <label htmlFor={`ingredient-${index}`} className="ml-2 text-sm text-neutral-600">
+                <label htmlFor={`ingredient-${index}`} className="ml-2 text-sm text-[#5a6d33]">
                   {ingredient}
                 </label>
               </div>
@@ -125,18 +125,18 @@ const PizzaCustomization = ({
       
       {/* Extra toppings */}
       <div>
-        <h4 className="text-sm font-medium text-neutral-700 mb-3" id="extras-heading">Extra prísady</h4>
+        <h4 className="text-sm font-medium text-[#4a5d23] mb-3" id="extras-heading">Extra prísady</h4>
         
         {/* Kategórie extra prísad */}
-        <div className="flex flex-wrap mb-3 border-b">
+        <div className="flex flex-wrap mb-3 border-b border-[#e0e8c9]">
           {extraCategories.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
               className={`px-3 py-2 text-sm font-medium transition-all ${
                 activeCategory === category.id 
-                  ? 'text-primary border-b-2 border-primary' 
-                  : 'text-neutral-500 hover:text-neutral-700'
+                  ? 'text-[#4a5d23] border-b-2 border-[#4a5d23]' 
+                  : 'text-[#5a6d33]/70 hover:text-[#5a6d33]'
               }`}
               aria-selected={activeCategory === category.id}
             >
@@ -159,8 +159,8 @@ const PizzaCustomization = ({
                 onClick={() => handleExtraToggle(extra)}
                 className={`ingredient-tag px-3 py-1.5 text-sm rounded-md border transition-colors ${
                   isExtraSelected(extra) 
-                    ? 'bg-primary/10 text-primary border-primary/30 font-medium' 
-                    : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-50'
+                    ? 'bg-[#4a5d23]/10 text-[#4a5d23] border-[#4a5d23]/30 font-medium' 
+                    : 'bg-white text-[#5a6d33] border-[#c9d6a3] hover:bg-[#f5f9ee]'
                 }`}
                 aria-pressed={isExtraSelected(extra)}
                 aria-label={`Extra prísada: ${extra.name}, cena: ${extra.price.toFixed(2)}€${isExtraSelected(extra) ? ', vybraté' : ''}`}
@@ -172,17 +172,17 @@ const PizzaCustomization = ({
         
         {/* Vybrané prísady */}
         {selectedExtras.length > 0 && (
-          <div className="mt-4 p-3 bg-neutral-50 rounded-md border border-neutral-100">
-            <h5 className="text-xs font-medium text-neutral-500 mb-2">Vybrané prísady:</h5>
+          <div className="mt-4 p-3 bg-[#f5f9ee] rounded-md border border-[#c9d6a3]">
+            <h5 className="text-xs font-medium text-[#4a5d23] mb-2">Vybrané prísady:</h5>
             <div className="flex flex-wrap gap-1">
               {selectedExtras.map(extra => (
                 <div key={extra.id} 
-                  className="px-2 py-1 text-xs rounded bg-white border border-neutral-200 flex items-center gap-1"
+                  className="px-2 py-1 text-xs rounded bg-white border border-[#c9d6a3] flex items-center gap-1"
                 >
-                  <span>{extra.name}</span>
+                  <span className="text-[#5a6d33]">{extra.name}</span>
                   <button 
                     onClick={() => handleExtraToggle(extra)}
-                    className="text-neutral-400 hover:text-neutral-700 font-bold"
+                    className="text-[#4a5d23]/50 hover:text-[#4a5d23] font-bold"
                     aria-label={`Odstrániť prísadu ${extra.name}`}
                   >
                     ×

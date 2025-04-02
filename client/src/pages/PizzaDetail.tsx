@@ -135,21 +135,21 @@ const PizzaDetail = () => {
       <nav className="flex mb-6" aria-label="Breadcrumb">
         <ol className="inline-flex items-center space-x-1 md:space-x-3">
           <li className="inline-flex items-center">
-            <Link to="/" className="text-neutral-600 hover:text-primary">
+            <Link to="/" className="text-[#4a5d23] hover:text-[#5c7328] font-medium">
               <Home className="w-4 h-4 mr-1" />
               Domov
             </Link>
           </li>
           <li>
             <div className="flex items-center">
-              <ChevronRight className="w-4 h-4 text-neutral-400" />
-              <Link to="/menu" className="ml-1 text-neutral-600 hover:text-primary md:ml-2">Menu</Link>
+              <ChevronRight className="w-4 h-4 text-[#a2b969]" />
+              <Link to="/menu" className="ml-1 text-[#4a5d23] hover:text-[#5c7328] md:ml-2 font-medium">Menu</Link>
             </div>
           </li>
           <li aria-current="page">
             <div className="flex items-center">
-              <ChevronRight className="w-4 h-4 text-neutral-400" />
-              <span className="ml-1 text-neutral-500 md:ml-2 truncate max-w-[150px] sm:max-w-xs">{pizza?.name}</span>
+              <ChevronRight className="w-4 h-4 text-[#a2b969]" />
+              <span className="ml-1 text-[#5a6d33] md:ml-2 truncate max-w-[150px] sm:max-w-xs font-medium">{pizza?.name}</span>
             </div>
           </li>
         </ol>
@@ -157,7 +157,7 @@ const PizzaDetail = () => {
 
       {pizza && (
         <>
-          <div className="bg-white rounded-xl shadow-md overflow-hidden">
+          <div className="nature-box bg-white bg-opacity-95 overflow-hidden border-2">
             <div className="flex flex-col md:flex-row">
               {/* Obrázok pizze */}
               <div className="md:w-2/5 relative">
@@ -171,32 +171,47 @@ const PizzaDetail = () => {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent md:hidden">
                   <div className="flex flex-wrap gap-1 justify-start">
-                    {pizza.tags.map((tag, index) => (
-                      <span key={index} className="inline-block bg-white/90 text-neutral-700 text-xs px-2 py-1 rounded-full">
+                    {pizza.tags.filter(tag => tag !== 'Vegetariánska').map((tag, index) => (
+                      <span key={index} className="inline-block bg-[#f2f5e9] text-[#4a5d23] text-xs px-2 py-1 rounded-full border border-[#e0e8c9]">
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
+                
+                {/* Price tag na obrázku */}
+                <div className="absolute top-2 right-2 z-10">
+                  <span className="bg-[#4a5d23] text-white font-bold px-3 py-1.5 rounded-full shadow-sm text-lg">
+                    {currentPrice.toFixed(2)}€
+                  </span>
+                </div>
+                
+                {/* Veggie badge */}
+                {pizza.tags.includes('Vegetariánska') && (
+                  <div className="absolute top-2 left-2 z-10">
+                    <span className="eco-badge">
+                      Vegetariánska
+                    </span>
+                  </div>
+                )}
               </div>
               
               {/* Detail pizze */}
               <div className="p-6 md:w-3/5 md:px-8 flex flex-col">
-                <div className="flex justify-between items-start border-b border-neutral-100 pb-4 mb-4">
+                <div className="flex justify-between items-start border-b border-[#e0e8c9] pb-4 mb-4">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-heading font-bold text-neutral-800">{pizza.name}</h2>
+                    <h2 className="text-2xl md:text-3xl font-heading font-bold text-[#4a5d23]">{pizza.name}</h2>
                     <div className="hidden md:flex flex-wrap gap-1 mt-2">
-                      {pizza.tags.map((tag, index) => (
-                        <span key={index} className="inline-block bg-neutral-100 text-neutral-600 text-xs px-2 py-1 rounded-full">
+                      {pizza.tags.filter(tag => tag !== 'Vegetariánska').map((tag, index) => (
+                        <span key={index} className="inline-block bg-[#f2f5e9] text-[#5a6d33] text-xs px-2 py-0.5 rounded-full border border-[#e0e8c9]">
                           {tag}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-2xl font-semibold text-primary">{currentPrice.toFixed(2)}€</span>
+                  <div className="text-right hidden md:block">
                     {currentPrice !== pizza.price && (
-                      <div className="text-sm text-neutral-500">
+                      <div className="text-sm text-[#5a6d33]">
                         Základná cena: {pizza.price.toFixed(2)}€
                       </div>
                     )}
@@ -205,21 +220,23 @@ const PizzaDetail = () => {
                 
                 {/* Popis pizze */}
                 <div className="mb-4">
-                  <h3 className="text-lg font-medium mb-2">Popis</h3>
-                  <p className="text-neutral-600">{pizza.description}</p>
+                  <h3 className="text-lg font-medium mb-2 text-[#4a5d23]">Popis</h3>
+                  <p className="text-neutral-700">{pizza.description}</p>
                   
                   {/* Info o gramáži a alergénoch */}
-                  <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-3 text-sm text-neutral-500">
-                    {pizza.weight && (
-                      <div className="flex items-center">
-                        <span className="font-medium mr-1">Gramáž:</span> {pizza.weight}
-                      </div>
-                    )}
-                    {pizza.allergens && (
-                      <div className="flex items-center">
-                        <span className="font-medium mr-1">Alergény:</span> {pizza.allergens}
-                      </div>
-                    )}
+                  <div className="mt-4 p-3 bg-[#f5f9ee] rounded-lg border border-[#e0e8c9]">
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#5a6d33]">
+                      {pizza.weight && (
+                        <div className="flex items-center bg-white px-3 py-1.5 rounded-md border border-[#e0e8c9]">
+                          <span className="font-medium mr-1">Gramáž:</span> {pizza.weight}
+                        </div>
+                      )}
+                      {pizza.allergens && (
+                        <div className="flex items-center bg-white px-3 py-1.5 rounded-md border border-[#e0e8c9]">
+                          <span className="font-medium mr-1">Alergény:</span> {pizza.allergens}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -237,13 +254,13 @@ const PizzaDetail = () => {
                 </div>
 
                 {/* Quantity and add to cart */}
-                <div className="mt-6 border-t border-neutral-100 pt-4">
+                <div className="mt-6 border-t border-[#e0e8c9] pt-4">
                   <div className="flex items-center gap-4">
                     <QuantitySelector quantity={quantity} onChange={setQuantity} />
                     <button 
                       onClick={handleAddToCart}
                       disabled={adding}
-                      className="flex-1 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition duration-200 flex items-center justify-center"
+                      className="flex-1 px-6 py-3 bg-[#4a5d23] text-white rounded-lg font-medium hover:bg-[#3d4d1c] transition duration-200 flex items-center justify-center shadow-sm"
                     >
                       {adding ? (
                         <div className="loading-spinner"></div>
@@ -262,27 +279,39 @@ const PizzaDetail = () => {
 
           {/* Recommended pizzas */}
           {recommendedPizzas.length > 0 && (
-            <div className="mt-12 border-t pt-8 border-neutral-100">
-              <h3 className="text-xl font-heading text-neutral-600 mb-4">Mohlo by ti chutiť aj</h3>
+            <div className="mt-8 pt-6 border-t border-[#e0e8c9]">
+              <h3 className="text-xl font-heading text-[#4a5d23] mb-4 font-semibold">Mohlo by ti chutiť aj</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {recommendedPizzas.map((recPizza) => (
-                  <div key={recPizza.id} className="pizza-card bg-white rounded-lg border border-neutral-100 overflow-hidden hover:shadow-sm transition-all">
+                  <div key={recPizza.id} className="nature-box bg-white bg-opacity-95 overflow-hidden border hover:border-[#7d9940] transition-all">
                     <Link to={`/pizza/${recPizza.id}`} className="block">
                       <div className="flex md:flex-row flex-col h-full">
-                        <div className="md:w-1/3 w-full">
+                        <div className="md:w-1/3 w-full relative">
                           <img 
                             className="h-24 md:h-full w-full object-cover" 
                             src={recPizza.image} 
                             alt={recPizza.name}
                             loading="lazy" 
                           />
+                          <div className="absolute top-1 right-1">
+                            <span className="bg-[#4a5d23] text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                              {recPizza.price.toFixed(2)}€
+                            </span>
+                          </div>
                         </div>
                         <div className="p-3 md:w-2/3 w-full">
-                          <div className="flex justify-between items-start">
-                            <h3 className="text-base font-heading font-medium">{recPizza.name}</h3>
-                            <span className="text-sm font-medium text-primary">{recPizza.price.toFixed(2)}€</span>
+                          <h3 className="text-base font-heading font-medium text-[#4a5d23]">{recPizza.name}</h3>
+                          <p className="text-neutral-700 mt-1 text-xs line-clamp-2">{recPizza.description}</p>
+                          <div className="mt-2 flex flex-wrap gap-1">
+                            {recPizza.tags.filter((tag, idx) => idx < 2 && tag !== 'Vegetariánska').map((tag, index) => (
+                              <span key={index} className="inline-block bg-[#f2f5e9] text-[#5a6d33] text-xs px-1.5 py-0.5 rounded-full border border-[#e0e8c9]">
+                                {tag}
+                              </span>
+                            ))}
+                            {recPizza.tags.includes('Vegetariánska') && (
+                              <span className="eco-badge text-xs">Vegetariánska</span>
+                            )}
                           </div>
-                          <p className="text-neutral-500 mt-1 text-xs line-clamp-2">{recPizza.description}</p>
                         </div>
                       </div>
                     </Link>

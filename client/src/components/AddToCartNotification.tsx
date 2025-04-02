@@ -38,22 +38,22 @@ const AddToCartNotification: React.FC<AddToCartNotificationProps> = ({
           transition={{ type: 'spring', damping: 15, stiffness: 200 }}
           className="fixed top-4 right-4 z-50 max-w-sm"
         >
-          <div className="bg-green-50 border border-green-100 shadow-lg rounded-lg px-4 py-3 flex items-center">
-            <div className="flex-shrink-0 bg-green-100 rounded-full p-2 mr-3">
-              <Check className="h-5 w-5 text-green-600" aria-hidden="true" />
+          <div className="bg-[#f5f9ee] border border-[#a2b969] shadow-lg rounded-lg px-4 py-3 flex items-center">
+            <div className="flex-shrink-0 bg-[#a2b969] rounded-full p-2 mr-3">
+              <ShoppingCart className="h-5 w-5 text-white" aria-hidden="true" />
             </div>
             <div className="flex-1 mr-2">
-              <p className="text-sm font-medium text-green-800">{message}</p>
+              <p className="text-sm font-medium text-[#4a5d23]">{message}</p>
             </div>
             <button
               onClick={() => {
                 setShowNotification(false);
                 onClose();
               }}
-              className="flex-shrink-0 p-1.5 rounded-full hover:bg-green-100 transition-colors"
+              className="flex-shrink-0 p-1.5 rounded-full hover:bg-[#e8f0d9] transition-colors"
               aria-label="Zavrieť notifikáciu"
             >
-              <X className="h-4 w-4 text-green-600" aria-hidden="true" />
+              <X className="h-4 w-4 text-[#4a5d23]" aria-hidden="true" />
             </button>
           </div>
         </motion.div>
