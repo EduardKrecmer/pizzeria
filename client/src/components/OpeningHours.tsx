@@ -71,23 +71,18 @@ const OpeningHours = () => {
   
   return (
     <div className="text-center text-sm">
-      <div className="inline-flex items-center px-2 py-0.5 rounded-full">
+      <div className="inline-flex items-center">
         <div 
           className={`mr-2 w-2 h-2 rounded-full ${
-            status === 'open' 
-              ? 'bg-primary shadow-sm shadow-primary/20' 
-              : 'bg-red-400'
+            status === 'open' ? 'bg-green-500' : 'bg-red-500'
           }`} 
           aria-hidden="true"
         ></div>
         <span 
-          className="font-medium"
+          className="text-neutral-200"
           aria-live="polite"
         >
-          {status === 'open' 
-            ? <span className="text-primary">Otvorené</span> 
-            : <span className="text-foreground/80">Zatvorené</span>
-          }
+          {status === 'open' ? 'Otvorené' : 'Zatvorené'}
         </span>
       </div>
     </div>
