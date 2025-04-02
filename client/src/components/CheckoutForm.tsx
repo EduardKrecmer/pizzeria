@@ -22,16 +22,18 @@ const CheckoutForm = () => {
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    e.preventDefault();
+    setFormData(prev => ({ ...prev, [name]: value }));
     
     // Clear error when user types
     if (errors[name as keyof CustomerInfo]) {
-      setErrors({ ...errors, [name]: '' });
+      setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
   
   // Format phone number as user types
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     const { value } = e.target;
     // Allow only numbers
     const numericValue = value.replace(/\D/g, '');
@@ -43,11 +45,11 @@ const CheckoutForm = () => {
       formattedValue = `${numericValue.slice(0, 3)} ${numericValue.slice(3, 6)} ${numericValue.slice(6, 10)}`;
     }
     
-    setFormData({ ...formData, phone: formattedValue });
+    setFormData(prev => ({ ...prev, phone: formattedValue }));
     
     // Clear error when user types
     if (errors.phone) {
-      setErrors({ ...errors, phone: '' });
+      setErrors(prev => ({ ...prev, phone: '' }));
     }
   };
   
