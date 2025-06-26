@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Extra syr",
+    "price": 1.50,
+    "category": "Syry"
+  },
+  {
+    "id": 2,
+    "name": "Mozzarella",
+    "price": 2.00,
+    "category": "Syry"
+  },
+  {
+    "id": 3,
+    "name": "Šunka",
+    "price": 2.50,
+    "category": "Mäso"
+  },
+  {
+    "id": 4,
+    "name": "Salami",
+    "price": 2.00,
+    "category": "Mäso"
+  },
+  {
+    "id": 5,
+    "name": "Huby",
+    "price": 1.50,
+    "category": "Zelenina"
+  },
+  {
+    "id": 6,
+    "name": "Olivy",
+    "price": 1.00,
+    "category": "Zelenina"
+  },
+  {
+    "id": 7,
+    "name": "Rukola",
+    "price": 1.00,
+    "category": "Zelenina"
+  },
+  {
+    "id": 8,
+    "name": "Bazalka",
+    "price": 0.50,
+    "category": "Iné"
+  }
+]

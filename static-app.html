@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Objednávkový Systém</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            olive: {
+              50: '#f8faf5',
+              100: '#f1f6e7',
+              200: '#e1ebc5',
+              300: '#cad9a3',
+              400: '#b0c078',
+              500: '#96a755',
+              600: '#788945',
+              700: '#5f6c37',
+              800: '#4c562f',
+              900: '#3d4527',
+              950: '#20250f',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8faf5;
+      color: #3d4527;
+    }
+    
+    .btn {
+      @apply px-4 py-2 bg-olive-600 text-white rounded-md transition-colors;
+    }
+    
+    .btn:hover {
+      @apply bg-olive-700;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .card {
+      @apply bg-white rounded-lg shadow-md overflow-hidden;
+    }
+    
+    .card-body {
+      @apply p-4;
+    }
+    
+    .card-title {
+      @apply text-xl font-semibold mb-2;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-olive-50 flex flex-col">
+  <header class="py-6 bg-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-olive-900">🍕 Pizza Objednávkový Systém</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="#" class="btn">Domov</a></li>
+          <li><a href="#" class="btn">Košík (0)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="container mx-auto py-8 flex-grow">
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-6">
+      <div class="text-center">
+        <h2 class="text-2xl font-semibold mb-4">Aplikácia sa načítava...</h2>
+        <p class="mb-4">
+          Prosím, počkajte chvíľu, kým sa aplikácia inicializuje.
+        </p>
+        
+        <div class="flex justify-center mt-8">
+          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-olive-600"></div>
+        </div>
+        
+        <p class="mt-4 text-olive-600">
+          Ak sa stránka dlhšie nenačíta, skúste ju obnoviť.
+        </p>
+        
+        <div class="mt-8">
+          <button onclick="location.reload()" class="btn">
+            Obnoviť stránku
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="py-4 text-center text-olive-600 mt-auto">
+    <p>&copy; 2025 Pizza Reštaurácia. Všetky práva vyhradené.</p>
+  </footer>
+  
+  <script>
+    // Presmerovanie na hlavnú aplikáciu po načítaní
+    setTimeout(() => {
+      console.log("Presmerovanie na hlavnú aplikáciu...");
+      window.location.href = "/";
+    }, 3000);
+  </script>
+</body>
+</html>

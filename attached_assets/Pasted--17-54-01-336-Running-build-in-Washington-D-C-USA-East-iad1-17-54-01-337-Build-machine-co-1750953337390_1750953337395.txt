@@ -1,0 +1,42 @@
+[17:54:01.336] Running build in Washington, D.C., USA (East) – iad1
+[17:54:01.337] Build machine configuration: 2 cores, 8 GB
+[17:54:01.351] Cloning github.com/EduardKrecmer/pizzeria (Branch: main, Commit: 8d795b9)
+[17:54:01.542] Previous build caches not available
+[17:54:04.947] Cloning completed: 3.596s
+[17:54:05.007] Found .vercelignore
+[17:54:05.033] Removed 289 ignored files defined in .vercelignore
+[17:54:05.033]   /.env.example
+[17:54:05.034]   /.github/PULL_REQUEST_TEMPLATE.md
+[17:54:05.034]   /.replit
+[17:54:05.034]   /.replit.new
+[17:54:05.034]   /attached_assets/eslint.config.js
+[17:54:05.034]   /attached_assets/Pasted--15-13-20-623-Running-build-in-Washington-D-C-USA-East-iad1-15-13-20-623-Build-machine-co-1750943683954_1750943683958.txt
+[17:54:05.034]   /attached_assets/Pasted--15-27-30-995-Running-build-in-Washington-D-C-USA-East-iad1-15-27-30-995-Build-machine-co-1750944497635_1750944497637.txt
+[17:54:05.034]   /attached_assets/Pasted--17-44-51-586-Running-build-in-Washington-D-C-USA-East-iad1-17-44-51-587-Build-machine-co-1750952766437_1750952766440.txt
+[17:54:05.034]   /attached_assets/Pasted-Pros-m-o-detailn-profesion-lnu-anal-zu-tejto-webovej-aplik-cie-uvediem-URL-zdrojov-s-bory-alebo--1750841006561_1750841006565.txt
+[17:54:05.034]   /attached_assets/postcss.config.js
+[17:54:05.344] Running "vercel build"
+[17:54:05.804] Vercel CLI 43.3.0
+[17:54:06.506] Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[17:54:06.510] Running "install" command: `npm ci --prefer-offline --no-audit`...
+[17:54:14.003] 
+[17:54:14.003] added 375 packages in 7s
+[17:54:14.004] 
+[17:54:14.005] 58 packages are looking for funding
+[17:54:14.007]   run `npm fund` for details
+[17:54:14.275] 
+[17:54:14.275] > pizzeria-web-app@1.0.0 build
+[17:54:14.275] > vite build
+[17:54:14.275] 
+[17:54:14.553] [36mvite v6.3.5 [32mbuilding for production...[36m[39m
+[17:54:14.600] [32m✓[39m 0 modules transformed.
+[17:54:14.602] [31m✗[39m Build failed in 22ms
+[17:54:14.602] [31merror during build:
+[17:54:14.603] [31mCould not resolve entry module "index.html".[31m
+[17:54:14.603]     at getRollupError (file:///vercel/path0/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+[17:54:14.603]     at error (file:///vercel/path0/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+[17:54:14.603]     at ModuleLoader.loadEntryModule (file:///vercel/path0/node_modules/rollup/dist/es/shared/node-entry.js:21448:20)
+[17:54:14.604]     at async Promise.all (index 0)[39m
+[17:54:14.617] Error: Command "cd client && npm run build" exited with 1
+[17:54:14.785] 
+[17:54:17.826] Exiting build container

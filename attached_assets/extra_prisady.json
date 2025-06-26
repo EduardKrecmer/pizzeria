@@ -1,0 +1,210 @@
+{
+  "Syry": [
+    {
+      "nazov": "Gorgonzola",
+      "mnozstvo": "50g",
+      "cena": 1.2
+    },
+    {
+      "nazov": "Parmezán",
+      "mnozstvo": "50g",
+      "cena": 1.2
+    },
+    {
+      "nazov": "Bryndza",
+      "mnozstvo": "50g",
+      "cena": 1.2
+    },
+    {
+      "nazov": "Mozzarella",
+      "mnozstvo": "50g",
+      "cena": 0.6
+    },
+    {
+      "nazov": "Byvolia mozzarella",
+      "mnozstvo": "50g",
+      "cena": 2.0
+    },
+    {
+      "nazov": "Niva",
+      "mnozstvo": "50g",
+      "cena": 0.7
+    },
+    {
+      "nazov": "Encián",
+      "mnozstvo": "50g",
+      "cena": 0.7
+    }
+  ],
+  "Mäso": [
+    {
+      "nazov": "Šunka",
+      "mnozstvo": "50g",
+      "cena": 1.6
+    },
+    {
+      "nazov": "Saláma",
+      "mnozstvo": "50g",
+      "cena": 1.6
+    },
+    {
+      "nazov": "Štipľavá saláma",
+      "mnozstvo": "50g",
+      "cena": 1.6
+    },
+    {
+      "nazov": "Slanina",
+      "mnozstvo": "50g",
+      "cena": 1.6
+    },
+    {
+      "nazov": "Klobása",
+      "mnozstvo": "50g",
+      "cena": 1.6
+    },
+    {
+      "nazov": "Tirolská slanina",
+      "mnozstvo": "50g",
+      "cena": 1.6
+    },
+    {
+      "nazov": "Pancetta",
+      "mnozstvo": "50g",
+      "cena": 1.6
+    },
+    {
+      "nazov": "Kuracie mäso",
+      "mnozstvo": "80g",
+      "cena": 1.6
+    },
+    {
+      "nazov": "Hovädzia sviečková",
+      "mnozstvo": "50g",
+      "cena": 2.5
+    },
+    {
+      "nazov": "Tuniak",
+      "mnozstvo": "50g",
+      "cena": 1.0
+    },
+    {
+      "nazov": "Losos",
+      "mnozstvo": "50g",
+      "cena": 1.7
+    },
+    {
+      "nazov": "Krevety",
+      "mnozstvo": "50g",
+      "cena": 2.0
+    }
+  ],
+  "Zelenina": [
+    {
+      "nazov": "Cibuľa",
+      "mnozstvo": "15g",
+      "cena": 0.3
+    },
+    {
+      "nazov": "Kapusta",
+      "mnozstvo": "30g",
+      "cena": 0.3
+    },
+    {
+      "nazov": "Šampiňóny",
+      "mnozstvo": "50g",
+      "cena": 0.5
+    },
+    {
+      "nazov": "Kukurica",
+      "mnozstvo": "50g",
+      "cena": 0.5
+    },
+    {
+      "nazov": "Cherry paradajky",
+      "mnozstvo": "50g",
+      "cena": 0.5
+    },
+    {
+      "nazov": "Artičoky",
+      "mnozstvo": "30g",
+      "cena": 0.4
+    },
+    {
+      "nazov": "Špargľa",
+      "mnozstvo": "30g",
+      "cena": 0.4
+    },
+    {
+      "nazov": "Špenát",
+      "mnozstvo": "30g",
+      "cena": 0.4
+    },
+    {
+      "nazov": "Rukola",
+      "mnozstvo": "30g",
+      "cena": 0.4
+    },
+    {
+      "nazov": "Brokolica",
+      "mnozstvo": "50g",
+      "cena": 0.6
+    },
+    {
+      "nazov": "Fazuľa",
+      "mnozstvo": "50g",
+      "cena": 0.6
+    }
+  ],
+  "Iné": [
+    {
+      "nazov": "Cesnak",
+      "mnozstvo": "5g",
+      "cena": 0.2
+    },
+    {
+      "nazov": "Chilli",
+      "mnozstvo": "5g",
+      "cena": 0.2
+    },
+    {
+      "nazov": "Sladké chilli",
+      "mnozstvo": "5g",
+      "cena": 0.2
+    },
+    {
+      "nazov": "Olivy",
+      "mnozstvo": "30g",
+      "cena": 0.5
+    },
+    {
+      "nazov": "Kapary",
+      "mnozstvo": "30g",
+      "cena": 0.7
+    },
+    {
+      "nazov": "Pínové oriešky",
+      "mnozstvo": "10g",
+      "cena": 0.8
+    },
+    {
+      "nazov": "Vajíčko",
+      "mnozstvo": "1 ks",
+      "cena": 0.5
+    },
+    {
+      "nazov": "Baranie rohy",
+      "mnozstvo": "50g",
+      "cena": 0.5
+    },
+    {
+      "nazov": "Jalapeño",
+      "mnozstvo": "50g",
+      "cena": 0.5
+    },
+    {
+      "nazov": "Ananás",
+      "mnozstvo": "50g",
+      "cena": 0.6
+    }
+  ]
+}

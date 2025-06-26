@@ -1,0 +1,68 @@
+Prosím o detailnú profesionálnu analýzu tejto webovej aplikácie (uvediem URL, zdrojové súbory alebo repo). Ide o objednávkový systém pre reálne použitie zákazníkmi. Očakávam expertné zhodnotenie z pohľadu:
+
+✅ 1. UI / UX (používateľské rozhranie a skúsenosť)
+Hodnoť zrozumiteľnosť a intuitívnosť rozhrania
+
+Zhodnoť rozloženie prvkov, farebnú schému, typografiu, vizuálnu hierarchiu
+
+Posúď responzívnosť a mobilnú použiteľnosť
+
+Zhodnoť mikrointerakcie (hover, click, loading stav)
+
+Skontroluj logiku nákupného/objednávkového flow – od výberu po potvrdenie
+
+✅ 2. Funkčnosť a technická implementácia
+Otestuj funkčnosť tlačidiel, formulárov, prepínačov a navigácie
+
+Zhodnoť logiku objednávkového systému – výber, košík, potvrdzovanie, notifikácie
+
+Skontroluj presnosť spracovania údajov (napr. položky v košíku, zhrnutie objednávky)
+
+Zhodnoť funkčné chyby alebo bugy
+
+Skontroluj chybové stavy a spätnú väzbu pre používateľa
+
+✅ 3. Výkon (performance)
+Rýchlosť načítania
+
+Optimalizácia obrázkov, skriptov, lazy loading
+
+Bundle size a jeho rozumné členenie
+
+Zhodnoť celkové SEO (ak je relevantné pre stránku)
+
+✅ 4. Bezpečnosť (security)
+Validácia a sanitizácia vstupov
+
+Potenciálne zraniteľnosti (napr. XSS, CSRF)
+
+HTTPS, CORS, správne HTTP hlavičky
+
+Overenie integrity dát pri odosielaní objednávok
+
+✅ 5. Prístupnosť (accessibility)
+WCAG 2.1 štandardy
+
+Použiteľnosť pre čítačky obrazovky
+
+Klávesnicová navigácia
+
+Kontrast a použitie ARIA značiek
+
+✅ 6. Kódová štruktúra a architektúra (ak sú dostupné súbory)
+Zhodnoť zrozumiteľnosť, komponentizáciu, pomenovanie
+
+Preskúmaj logiku správy stavu (napr. Redux, Context, signalovanie)
+
+Zhodnoť organizáciu priečinkov a modularitu
+
+Skontroluj opakovanie kódu, použiteľnosť znovu použiteľných komponentov
+
+🔄 Očakávaný výstup:
+Zoznam nedostatkov a oblastí na zlepšenie (zoradené podľa priority)
+
+Konkrétny akčný plán s krokmi na zlepšenie (napr. redesign, refaktor, nové funkcionality)
+
+Odporúčania na nástroje, knižnice, frameworky alebo techniky, ktoré zefektívnia vývoj alebo zlepšia použiteľnosť
+
+Ak je možné, zhodnoť stránku z pohľadu konkurencie alebo best practices v danej oblasti

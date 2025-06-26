@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Margherita",
+    "description": "Klasická pizza s paradajkovou omáčkou, mozzarellou a čerstvou bazalkou",
+    "price": 7.50,
+    "image": "margherita",
+    "tags": ["vegetarian", "classic"],
+    "ingredients": ["paradajková omáčka", "mozzarella", "bazalka", "olivový olej"],
+    "weight": "350g",
+    "allergens": ["lepok", "mlieko"]
+  },
+  {
+    "id": 2,
+    "name": "Salami",
+    "description": "Lahodná pizza so salamou, mozzarellou a paradajkovou omáčkou",
+    "price": 8.50,
+    "image": "salami",
+    "tags": ["meat", "popular"],
+    "ingredients": ["paradajková omáčka", "mozzarella", "salami"],
+    "weight": "380g",
+    "allergens": ["lepok", "mlieko"]
+  },
+  {
+    "id": 3,
+    "name": "Hawaii",
+    "description": "Exotická kombinácia šunky, ananásu a syra na paradajkovej omáčke",
+    "price": 9.00,
+    "image": "hawaii",
+    "tags": ["sweet", "exotic"],
+    "ingredients": ["paradajková omáčka", "mozzarella", "šunka", "ananás"],
+    "weight": "400g",
+    "allergens": ["lepok", "mlieko"]
+  },
+  {
+    "id": 4,
+    "name": "Quattro Stagioni",
+    "description": "Pizza rozdelená na štyri časti: šunka, huby, klobása a olivy",
+    "price": 10.50,
+    "image": "quattro-stagioni",
+    "tags": ["variety", "premium"],
+    "ingredients": ["paradajková omáčka", "mozzarella", "šunka", "huby", "klobása", "olivy"],
+    "weight": "450g",
+    "allergens": ["lepok", "mlieko"]
+  },
+  {
+    "id": 5,
+    "name": "Pepperoni",
+    "description": "Pikantná pizza s pepperoni salamou a extra syrom",
+    "price": 9.50,
+    "image": "pepperoni",
+    "tags": ["spicy", "popular"],
+    "ingredients": ["paradajková omáčka", "mozzarella", "pepperoni salami"],
+    "weight": "380g",
+    "allergens": ["lepok", "mlieko"]
+  }
+]

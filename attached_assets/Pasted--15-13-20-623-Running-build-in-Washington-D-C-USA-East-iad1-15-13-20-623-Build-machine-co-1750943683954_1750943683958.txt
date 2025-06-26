@@ -1,0 +1,37 @@
+[15:13:20.623] Running build in Washington, D.C., USA (East) – iad1
+[15:13:20.623] Build machine configuration: 2 cores, 8 GB
+[15:13:20.637] Cloning github.com/EduardKrecmer/pizzeria (Branch: main, Commit: 37774fd)
+[15:13:20.811] Previous build caches not available
+[15:13:21.165] Cloning completed: 528.000ms
+[15:13:21.570] Running "vercel build"
+[15:13:22.069] Vercel CLI 43.3.0
+[15:13:22.805] Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[15:13:22.809] Running "install" command: `npm install`...
+[15:13:29.763] 
+[15:13:29.764] added 333 packages, and audited 334 packages in 7s
+[15:13:29.764] 
+[15:13:29.764] 51 packages are looking for funding
+[15:13:29.765]   run `npm fund` for details
+[15:13:29.765] 
+[15:13:29.766] 1 low severity vulnerability
+[15:13:29.766] 
+[15:13:29.766] To address all issues, run:
+[15:13:29.766]   npm audit fix
+[15:13:29.766] 
+[15:13:29.766] Run `npm audit` for details.
+[15:13:30.587] npm warn exec The following package was not found and will be installed: vite@7.0.0
+[15:13:36.359] [31mfailed to load config from /vercel/path0/vite.config.vercel.ts[39m
+[15:13:36.360] [31merror during build:
+[15:13:36.360] Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /vercel/path0/node_modules/.vite-temp/vite.config.vercel.ts.timestamp-1750943616357-5a792ca3a0702.mjs
+[15:13:36.360]     at Object.getPackageJSONURL (node:internal/modules/package_json_reader:256:9)
+[15:13:36.360]     at packageResolve (node:internal/modules/esm/resolve:768:81)
+[15:13:36.360]     at moduleResolve (node:internal/modules/esm/resolve:854:18)
+[15:13:36.360]     at defaultResolve (node:internal/modules/esm/resolve:984:11)
+[15:13:36.361]     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:780:12)
+[15:13:36.361]     at #cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
+[15:13:36.362]     at ModuleLoader.resolve (node:internal/modules/esm/loader:687:38)
+[15:13:36.362]     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:305:38)
+[15:13:36.362]     at ModuleJob._link (node:internal/modules/esm/module_job:137:49)[39m
+[15:13:36.385] Error: Command "npx vite build --config vite.config.vercel.ts" exited with 1
+[15:13:36.570] 
+[15:13:40.149] Exiting build container

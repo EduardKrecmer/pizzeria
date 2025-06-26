@@ -1,0 +1,49 @@
+[15:27:30.995] Running build in Washington, D.C., USA (East) – iad1
+[15:27:30.995] Build machine configuration: 2 cores, 8 GB
+[15:27:31.009] Cloning github.com/EduardKrecmer/pizzeria (Branch: main, Commit: ddf4ba4)
+[15:27:31.286] Previous build caches not available
+[15:27:31.418] Cloning completed: 409.000ms
+[15:27:31.738] Running "vercel build"
+[15:27:32.167] Vercel CLI 43.3.0
+[15:27:32.933] Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[15:27:32.938] Running "install" command: `npm install`...
+[15:27:40.225] 
+[15:27:40.225] added 375 packages, and audited 376 packages in 7s
+[15:27:40.226] 
+[15:27:40.226] 58 packages are looking for funding
+[15:27:40.226]   run `npm fund` for details
+[15:27:40.228] 
+[15:27:40.228] 1 low severity vulnerability
+[15:27:40.228] 
+[15:27:40.228] To address all issues, run:
+[15:27:40.229]   npm audit fix
+[15:27:40.229] 
+[15:27:40.229] Run `npm audit` for details.
+[15:27:40.493] 
+[15:27:40.494] > pizzeria-web-app@1.0.0 vercel-build
+[15:27:40.494] > vite build
+[15:27:40.494] 
+[15:27:40.781] [36mvite v6.3.5 [32mbuilding for production...[36m[39m
+[15:27:40.858] transforming...
+[15:27:40.880] [32m✓[39m 3 modules transformed.
+[15:27:40.881] [31m✗[39m Build failed in 72ms
+[15:27:40.881] [31merror during build:
+[15:27:40.881] [31m[vite:css] Failed to load PostCSS config (searchPath: /vercel/path0/client): [Error] Loading PostCSS Plugin failed: Cannot find module 'autoprefixer'
+[15:27:40.882] Require stack:
+[15:27:40.882] - /vercel/path0/postcss.config.js
+[15:27:40.882] 
+[15:27:40.882] (@/vercel/path0/postcss.config.js)
+[15:27:40.883] Error: Loading PostCSS Plugin failed: Cannot find module 'autoprefixer'
+[15:27:40.883] Require stack:
+[15:27:40.883] - /vercel/path0/postcss.config.js
+[15:27:40.883] 
+[15:27:40.883] (@/vercel/path0/postcss.config.js)
+[15:27:40.884]     at load (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:11776:11)
+[15:27:40.884]     at async Promise.all (index 1)
+[15:27:40.884]     at async plugins (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:11805:12)
+[15:27:40.884]     at async processResult (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:11876:14)[31m
+[15:27:40.885] file: [36m/vercel/path0/client/src/index.css[31m
+[15:27:40.885] [39m
+[15:27:40.903] Error: Command "npm run vercel-build" exited with 1
+[15:27:41.107] 
+[15:27:43.901] Exiting build container

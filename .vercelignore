@@ -1,0 +1,49 @@
+# Vercel deployment optimization
+
+# Development files
+server/
+simple-app/
+vercel-deployment/
+scripts/
+
+# Replit specific
+.replit*
+replit.nix
+*.sh
+
+# Development configs
+vite.config.ts
+vite.config.simple.js
+vite.config.vercel.ts
+tsconfig.json
+tsconfig.*.json
+eslint.config.js
+postcss.config.js
+tailwind.config.ts
+
+# Documentation
+*.md
+CONTRIBUTING.md
+LICENSE
+
+# Build artifacts  
+node_modules/.cache/
+dist/assets/*.map
+
+# Environment files
+.env.local
+.env.development
+.env.*
+
+# Backup files
+*.bak
+*.backup
+*-backup.*
+*-old.*
+
+# Large assets (keep only essential)
+attached_assets/*.txt
+
+# Temporary files
+*.log
+*.tmp
